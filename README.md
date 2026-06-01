@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suppanut Sukuntapuksa — Portfolio
 
-## Getting Started
+A minimal, editorial portfolio for a Senior UX/UI Designer. Built with
+**Next.js 16 + Tailwind CSS v4 + Motion**. Showcases UX/UI and web design work
+as full case studies.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # first time only
+npm run dev      # start dev server → http://localhost:3000
+npm run build    # production build
+npm start        # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where everything lives
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/
+  page.tsx              Home (hero + selected work + about teaser)
+  work/page.tsx         All work (filterable by category)
+  work/[slug]/page.tsx  Case-study template (one per project, auto-generated)
+  about/page.tsx        About
+  contact/page.tsx      Contact
+  globals.css           Colors, fonts, base styles
+components/             Nav, Footer, Hero, cards, animations
+lib/
+  projects.ts           ★ ALL PROJECT CONTENT — edit here
+  site.ts               ★ Your name, bio, email, links — edit here
+public/work/            ★ Project images go here
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing your content
 
-## Learn More
+**1. Personal info** → `lib/site.ts`
+Name, role, bio, email, and social links (Dribbble, LottieFiles, LinkedIn, CV).
 
-To learn more about Next.js, take a look at the following resources:
+**2. Projects & case studies** → `lib/projects.ts`
+Each project is one object in the `projects` array. The fields:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| field        | what it does                                              |
+|--------------|-----------------------------------------------------------|
+| `title`      | Project name                                              |
+| `category`   | `"UX/UI Design"` or `"Web Design"` (drives the filters)   |
+| `summary`    | One-line tagline shown in lists                           |
+| `client/role/year/tags` | Meta shown on the case-study page              |
+| `accent`     | Hex color for the placeholder block until you add images  |
+| `overview`   | The big opening paragraph                                 |
+| `sections`   | The case study: challenge → process → solution → impact   |
+| `metrics`    | Optional headline stats (value + label)                   |
+| `gallery`    | How many image slots to show                              |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The case-study sections currently contain **placeholder text** — replace each
+`body` with your real story. The home page features the first 6 projects; reorder
+the array to change which ones (and in what order) appear.
 
-## Deploy on Vercel
+## Adding your images
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+No images are required — every project shows a colored placeholder with its
+initials until you add files. To use real screenshots, drop them here:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+public/work/<slug>/cover.jpg   ← main image (cards + case-study hero)
+public/work/<slug>/01.jpg      ← gallery image 1
+public/work/<slug>/02.jpg      ← gallery image 2  ... etc.
+```
+
+`<slug>` is the project's `slug` in `lib/projects.ts`
+(e.g. `public/work/bitkub-next/cover.jpg`). Images fade in automatically once
+present — no code changes needed. JPG, PNG, or WebP all work.
+
+## Deploying (free)
+
+Push to GitHub, then import the repo at [vercel.com](https://vercel.com) — it
+auto-detects Next.js and deploys on every push. You can add a custom domain in
+the Vercel dashboard.
