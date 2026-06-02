@@ -38,9 +38,9 @@ export default function ContactPage() {
               href={l.href}
               target="_blank"
               rel="noreferrer"
-              className="text-base link-underline opacity-70 hover:opacity-100"
+              className="text-xl md:text-2xl link-underline opacity-70 hover:opacity-100"
             >
-              {l.label} ↗
+              {l.label}
             </a>
           ))}
         </div>

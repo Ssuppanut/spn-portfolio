@@ -59,7 +59,7 @@ const placeholderSections = (kind: string): CaseSection[] => [
   },
 ];
 
-export const projects: Project[] = [
+const projectList: Project[] = [
   {
     slug: "k-plus-investment",
     title: "K PLUS Investment",
@@ -295,6 +295,30 @@ export const projects: Project[] = [
     gallery: 3,
   },
 ];
+
+// ── Display order ──────────────────────────────────────────────────────────
+// Reorder projects across the whole site (home featured + /work) by editing
+// this list of slugs. The home page shows the first 8.
+const order = [
+  "k-plus-investment",
+  "staygold",
+  "bitkub-next",
+  "de-fence",
+  "finvest-redesign",
+  "cargo-work",
+  "tossakan",
+  "daily-ui-challenge",
+  "samui-plus",
+  "sha-plus",
+  "astro-solutions",
+  "airport-thailand",
+  "unicorn-house",
+  "skl-connect",
+];
+
+export const projects: Project[] = order
+  .map((slug) => projectList.find((p) => p.slug === slug))
+  .filter((p): p is Project => Boolean(p));
 
 export const getProject = (slug: string) =>
   projects.find((p) => p.slug === slug);

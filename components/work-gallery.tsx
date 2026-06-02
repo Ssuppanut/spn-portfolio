@@ -14,19 +14,19 @@ export function WorkGallery() {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2 mb-16 md:mb-24">
+      <div className="flex flex-wrap gap-2 mb-14 sm:mb-20">
         {filters.map((f) => (
           <button
             key={f}
             onClick={() => setActive(f)}
-            className={`px-4 py-2 rounded-full text-sm border transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm border transition-colors lg:px-6 lg:py-3 lg:text-base ${
               active === f
                 ? "bg-ink text-paper border-ink"
                 : "border-line text-muted hover:text-ink hover:border-ink/40"
             }`}
           >
             {f}
-            <span className="ml-2 font-mono text-xs opacity-60">
+            <span className="ml-2 font-mono text-xs opacity-60 lg:text-sm">
               {f === "All"
                 ? projects.length
                 : projects.filter((p) => p.category === f).length}

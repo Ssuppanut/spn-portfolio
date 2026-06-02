@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { site } from "@/lib/site";
 import { ThemeToggle } from "./theme-toggle";
 
 const items = [
@@ -38,13 +37,10 @@ export function Nav() {
       <div className="flex items-center justify-between px-gutter h-16 md:h-20">
         <Link
           href="/"
-          className="font-mono text-sm tracking-tight font-medium z-50"
+          className="text-2xl font-black tracking-tight z-50"
           aria-label="Home"
         >
-          {site.shortName}
-          {site.available && (
-            <span className="ml-2 inline-block h-1.5 w-1.5 rounded-full bg-emerald-600 align-middle" />
-          )}
+          SPN<span className="text-orange-500">.</span>
         </Link>
 
         {/* desktop */}
@@ -55,7 +51,7 @@ export function Nav() {
               <Link
                 key={it.href}
                 href={it.href}
-                className={`text-sm link-underline transition-opacity ${
+                className={`text-lg link-underline transition-opacity ${
                   active ? "opacity-100" : "opacity-60 hover:opacity-100"
                 }`}
               >
@@ -76,12 +72,12 @@ export function Nav() {
             aria-expanded={open}
           >
           <motion.span
-            animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="block h-px w-6 bg-ink"
+            animate={open ? { rotate: 45, y: 3.5 } : { rotate: 0, y: 0 }}
+            className="block h-px w-6 bg-ink origin-center"
           />
           <motion.span
-            animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="block h-px w-6 bg-ink"
+            animate={open ? { rotate: -45, y: -3.5 } : { rotate: 0, y: 0 }}
+            className="block h-px w-6 bg-ink origin-center"
           />
           </button>
         </div>

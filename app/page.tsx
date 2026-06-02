@@ -13,10 +13,10 @@ export default function Home() {
 
       {/* About */}
       <section className="px-gutter mt-32 md:mt-48 mb-40 md:mb-64">
-        <div className="mb-10 flex items-center justify-between gap-4">
-          <h2 className="display lowercase text-[clamp(1.75rem,5vw,3.75rem)] leading-none">
+        <div className="mb-14 flex items-center justify-between gap-4">
+          <h3 className="display lowercase text-[clamp(1.75rem,5vw,3.75rem)] leading-none">
             about
-          </h2>
+          </h3>
           <Link
             href="/about"
             className="inline-flex items-center gap-2 rounded-xl bg-ink/10 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-ink/20"
@@ -25,7 +25,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <p className="display lowercase max-w-[22ch] text-[clamp(1.75rem,4.5vw,3.75rem)] leading-[1.08]">
+        <p className="display lowercase max-w-[22ch] text-[clamp(2.25rem,6.5vw,5.25rem)] leading-[1.08]">
           <ScrollRevealText text={site.intro} />
         </p>
 

@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { projects } from "@/lib/projects";
 import { WorkMasonry } from "./work-masonry";
 
@@ -12,11 +13,28 @@ export const pillButton =
 export function FeaturedWork() {
   const featured = projects.slice(0, 8);
 
+  // fade the whole section in as it scrolls into view, out as it leaves
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.8, 1],
+    [0, 1, 1, 0]
+  );
+
   return (
-    <section id="work" className="px-gutter mt-24 md:mt-40">
+    <motion.section
+      ref={ref}
+      id="work"
+      style={{ opacity }}
+      className="px-gutter mt-24 md:mt-40"
+    >
       {/* heading + action on one row */}
-      <div className="mb-16 flex items-center justify-between gap-4 md:mb-24">
-        <motion.h2
+      <div className="mb-10 flex items-center justify-between gap-4 lg:mb-14">
+        <motion.h3
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -24,14 +42,13 @@ export function FeaturedWork() {
           className="display text-[clamp(1.75rem,5vw,3.75rem)]"
         >
           work
-        </motion.h2>
+        </motion.h3>
         <Link href="/work" className={pillButton}>
           View all {projects.length} projects
-          <span>→</span>
         </Link>
       </div>
 
       <WorkMasonry projects={featured} />
-    </section>
+    </motion.section>
   );
 }

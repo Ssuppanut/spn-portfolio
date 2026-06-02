@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { type Project } from "@/lib/projects";
 import { WorkTile } from "./work-tile";
 
@@ -22,6 +23,15 @@ function offsetsFor(cols: number) {
 
 export function WorkMasonry({ projects }: { projects: Project[] }) {
   const [cols, setCols] = useState(4);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  // alternating column parallax — even columns drift up, odd columns drift down
+  const yUp = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const yDown = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   useEffect(() => {
     const update = () => setCols(colsForWidth(window.innerWidth));
@@ -35,17 +45,24 @@ export function WorkMasonry({ projects }: { projects: Project[] }) {
   const offsets = offsetsFor(cols);
 
   return (
-    <div className="flex items-start gap-5 lg:gap-8">
+    <div
+      ref={containerRef}
+      className="flex items-start gap-5 overflow-hidden pb-30 lg:gap-8"
+    >
       {columns.map((col, ci) => (
-        <div
+        <motion.div
           key={ci}
           className="flex min-w-0 flex-1 flex-col gap-14 lg:gap-24"
-          style={{ marginTop: offsets[ci % offsets.length] ?? 0 }}
+          style={{
+            marginTop: offsets[ci % offsets.length] ?? 0,
+            // no parallax on mobile (single column)
+            y: cols === 1 ? 0 : ci % 2 === 0 ? yUp : yDown,
+          }}
         >
           {col.map((p) => (
             <WorkTile key={p.slug} project={p} ratio={TILE_RATIO} />
           ))}
-        </div>
+        </motion.div>
       ))}
     </div>
   );

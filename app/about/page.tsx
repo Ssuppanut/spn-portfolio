@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
+import { ProjectMedia } from "@/components/project-media";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -7,45 +8,57 @@ export const metadata: Metadata = {
   description: site.tagline,
 };
 
-const expertise = [
-  "UX/UI Design",
-  "Product Design",
-  "Design Systems",
+const skills = [
   "User Research",
+  "Automate Design Systems",
   "Prototyping",
   "Interaction Design",
-  "Web Design",
-  "Mobile Apps",
+  "Responsive Design",
+  "Usability testing",
+  "Visual communication",
+  "HTML / CSS",
 ];
 
 const industries = ["Fintech", "Banking", "Crypto / Web3", "Travel", "Logistics"];
 
-const tools = ["Figma", "Protopie", "After Effects", "Lottie", "Framer"];
+const tools = ["Figma", "Adobe Creative Suite", "Maze", "Claude", "Stitch"];
 
 export default function AboutPage() {
   return (
-    <section className="px-gutter pt-32 md:pt-44">
+    <section className="px-gutter pt-32 md:pt-44 pb-40 md:pb-64">
       <p className="eyebrow mb-6">About</p>
       <h1 className="display text-[clamp(2.5rem,7vw,6rem)] max-w-[18ch]">
         {site.role} based in {site.location}.
       </h1>
 
       <div className="mt-20 grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div className="md:col-span-7 space-y-6">
-          {site.about.map((p, i) => (
-            <Reveal key={i} delay={i * 0.05}>
-              <p className="text-xl md:text-2xl leading-relaxed text-ink/80">
-                {p}
-              </p>
-            </Reveal>
-          ))}
+        <div className="md:col-span-7">
+          <div className="space-y-6">
+            {site.about.map((p, i) => (
+              <Reveal key={i} delay={i * 0.05}>
+                <p className="text-xl md:text-2xl leading-relaxed text-ink/80">
+                  {p}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.15} className="mt-12">
+            <ProjectMedia
+              src="/about.jpg"
+              accent="#3f3f46"
+              accentText="light"
+              label={site.name}
+              className="aspect-[16/10] w-full rounded-md"
+            />
+          </Reveal>
         </div>
 
         <div className="md:col-span-4 md:col-start-9 space-y-12">
           <div>
-            <p className="eyebrow mb-4">Expertise</p>
+            <p className="eyebrow mb-4">Skills</p>
             <ul className="space-y-2">
-              {expertise.map((e) => (
+              {skills.map((e) => (
                 <li key={e} className="text-base border-b border-line pb-2">
                   {e}
                 </li>
