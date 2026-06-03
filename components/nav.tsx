@@ -12,24 +12,38 @@ const items = [
   { href: "/contact", label: "Contact" },
 ];
 
+// while scrolled within this range on the home page, the nav sits over the
+// "SPN." lens overlay → use the inverse (paper) colour so it stays legible.
+const REVEAL_RANGE = 1600;
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [overReveal, setOverReveal] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      setOverReveal(pathname === "/" && y < REVEAL_RANGE);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => setOpen(false), [pathname]);
+
+  // over the lens overlay (and menu closed): footer-style inverse colour
+  const inverse = overReveal && !open;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        scrolled || open
+        inverse ? "text-paper" : "text-ink"
+      } ${
+        (scrolled || open) && !inverse
           ? "bg-paper/80 backdrop-blur-md border-b border-line"
           : "border-b border-transparent"
       }`}
@@ -73,11 +87,11 @@ export function Nav() {
           >
           <motion.span
             animate={open ? { rotate: 45, y: 3.5 } : { rotate: 0, y: 0 }}
-            className="block h-px w-6 bg-ink origin-center"
+            className="block h-px w-6 bg-current origin-center"
           />
           <motion.span
             animate={open ? { rotate: -45, y: -3.5 } : { rotate: 0, y: 0 }}
-            className="block h-px w-6 bg-ink origin-center"
+            className="block h-px w-6 bg-current origin-center"
           />
           </button>
         </div>

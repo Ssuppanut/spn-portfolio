@@ -1,31 +1,18 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { RevealText } from "./reveal";
 import { Portrait } from "./portrait";
 import { site } from "@/lib/site";
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  // content drifts up and fades as you scroll into the work section
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-
   // split full name into two stacked lines (first / last)
   const [firstName, ...rest] = site.name.split(" ");
   const lastName = rest.join(" ");
 
   return (
-    <section
-      ref={ref}
-      className="px-gutter pt-20 md:pt-28 pb-20 md:pb-28 min-h-[88vh] flex flex-col justify-start lg:justify-center"
-    >
-      <motion.div style={{ y, opacity }}>
+    <section className="px-gutter pt-20 md:pt-28 pb-20 md:pb-28 min-h-[88vh] flex flex-col justify-start lg:justify-center">
+      <div>
         <motion.p
           className="eyebrow mb-8"
           initial={{ opacity: 0 }}
@@ -42,11 +29,7 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="md:hidden mb-8 h-40 w-40"
         >
-          <Portrait
-            src="/portrait.jpg"
-            label={site.name}
-            className="h-full w-full"
-          />
+          <Portrait src="/portrait.jpg" label={site.name} className="h-full w-full" />
         </motion.div>
 
         <div className="flex items-center gap-8">
@@ -61,11 +44,7 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="ml-auto hidden md:block shrink-0 aspect-square h-[calc(1.9*clamp(2.75rem,9vw,9rem))]"
           >
-            <Portrait
-              src="/portrait.jpg"
-              label={site.name}
-              className="h-full w-full"
-            />
+            <Portrait src="/portrait.jpg" label={site.name} className="h-full w-full" />
           </motion.div>
         </div>
 
@@ -83,12 +62,9 @@ export function Hero() {
             <p>{site.location}</p>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="mt-14 md:mt-22 flex items-center gap-3 text-muted"
-        style={{ opacity }}
-      >
+      <div className="mt-14 md:mt-22 flex items-center gap-3 text-muted">
         <motion.span
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
@@ -99,7 +75,7 @@ export function Hero() {
         <span className="font-mono text-xs uppercase tracking-widest">
           Scroll to explore
         </span>
-      </motion.div>
+      </div>
     </section>
   );
 }

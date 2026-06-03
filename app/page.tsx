@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroScrollReveal } from "@/components/hero-scroll-reveal";
 import { Hero } from "@/components/hero";
 import { FeaturedWork } from "@/components/featured-work";
 import { ScrollRevealText } from "@/components/scroll-reveal-text";
@@ -7,7 +8,10 @@ import { site } from "@/lib/site";
 export default function Home() {
   return (
     <>
-      <Hero />
+      {/* lens reveal — the hero is revealed through the "SPN." letters as you scroll */}
+      <HeroScrollReveal>
+        <Hero />
+      </HeroScrollReveal>
 
       <FeaturedWork />
 

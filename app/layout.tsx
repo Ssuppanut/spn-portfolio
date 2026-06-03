@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Rubik_Glitch } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { ScrollStage } from "@/components/scroll-stage";
@@ -15,6 +15,13 @@ const inter = Inter({
 
 const mono = JetBrains_Mono({
   variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const rubikGlitch = Rubik_Glitch({
+  variable: "--font-rubik-glitch",
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
@@ -38,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${mono.variable} h-full`}
+      className={`${inter.variable} ${mono.variable} ${rubikGlitch.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full">
