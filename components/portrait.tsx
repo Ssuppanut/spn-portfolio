@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Circular profile photo. Shows a clean placeholder (initials) until a real
@@ -17,6 +18,16 @@ export function Portrait({
   className?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Cached images can already be `complete` before React attaches `onLoad`, so
+  // the event never fires. Check on mount so a cached portrait still fades in.
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, [src]);
+
   const initials = label
     .split(" ")
     .filter(Boolean)
@@ -37,12 +48,14 @@ export function Portrait({
           {initials}
         </span>
       </div>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
+        ref={imgRef}
         src={src}
         alt={label}
+        fill
+        sizes="(max-width: 768px) 40vw, 320px"
         onLoad={() => setLoaded(true)}
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+        className={`object-cover transition-opacity duration-700 ${
           loaded ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden={!loaded}

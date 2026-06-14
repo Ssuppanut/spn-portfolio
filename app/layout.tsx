@@ -45,10 +45,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${mono.variable} ${rubikGlitch.variable} h-full`}
+      className={`${inter.variable} ${mono.variable} ${rubikGlitch.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-full">
+      <body className="min-h-screen">
         <ThemeProvider>
           <SmoothScroll>
             <Nav />

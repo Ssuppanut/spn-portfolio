@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Always renders a tasteful accent-colored placeholder with the project
@@ -15,14 +16,27 @@ export function ProjectMedia({
   accentText = "light",
   label,
   className = "",
+  sizes = "(max-width: 768px) 100vw, 50vw",
 }: {
   src: string;
   accent: string;
   accentText?: "light" | "dark";
   label: string;
   className?: string;
+  /** responsive sizes hint for the optimizer; defaults to a 2-up grid cell */
+  sizes?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Cached images can already be `complete` before React attaches `onLoad`, so
+  // the event never fires. Check on mount so cached covers still fade in.
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, [src]);
+
   const initials = label
     .replace(/[^a-zA-Z0-9 ]/g, "")
     .split(" ")
@@ -59,13 +73,16 @@ export function ProjectMedia({
         />
       </div>
 
-      {/* real image fades in only once it actually loads */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      {/* real image fades in only once it actually loads. next/image resizes,
+          serves modern formats and lazy-loads it — same crop, far less bytes. */}
+      <Image
+        ref={imgRef}
         src={src}
         alt={label}
+        fill
+        sizes={sizes}
         onLoad={() => setLoaded(true)}
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+        className={`object-cover transition-opacity duration-700 ${
           loaded ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden={!loaded}

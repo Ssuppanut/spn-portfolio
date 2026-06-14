@@ -39,7 +39,11 @@ export default async function CaseStudy({
     { label: "Client", value: project.client },
     { label: "Role", value: project.role },
     { label: "Year", value: project.year },
+    ...(project.team ? [{ label: "Team", value: project.team }] : []),
+    ...(project.platform ? [{ label: "Platform", value: project.platform }] : []),
     { label: "Category", value: project.category },
+    ...(project.tools ? [{ label: "Tools", value: project.tools }] : []),
+    ...(project.methods ? [{ label: "Methods", value: project.methods }] : []),
   ];
 
   return (
@@ -70,6 +74,7 @@ export default async function CaseStudy({
             accentText={project.accentText}
             label={project.title}
             className="aspect-[16/9] w-full rounded-md"
+            sizes="100vw"
           />
         </Reveal>
       </div>
@@ -130,48 +135,153 @@ export default async function CaseStudy({
         </div>
       </div>
 
-      {/* Sections interleaved with gallery */}
-      <div className="px-gutter mt-24 md:mt-36 space-y-24 md:space-y-36">
-        {project.sections.map((section, i) => (
-          <section
-            key={section.heading}
-            className="grid grid-cols-1 md:grid-cols-12 gap-8"
-          >
-            <div className="md:col-span-4">
-              <p className="eyebrow mb-4">{String(i + 1).padStart(2, "0")}</p>
-              <h2 className="display text-2xl md:text-3xl">{section.heading}</h2>
-            </div>
-            <div className="md:col-span-7 md:col-start-6">
-              <p className="text-lg md:text-xl text-ink/80 leading-relaxed">
-                {section.body}
-              </p>
-            </div>
-          </section>
-        ))}
-      </div>
+      {project.caseStudy ? (
+        /* Rich, flagship case study: text blocks + per-section captioned screens */
+        <div className="px-gutter mt-24 md:mt-36 space-y-24 md:space-y-36">
+          {project.caseStudy.map((block, i) => {
+            const cols = block.imageCols ?? 3;
+            const imgSizes =
+              cols === 2
+                ? "(max-width: 768px) 100vw, 50vw"
+                : "(max-width: 768px) 100vw, 33vw";
+            return (
+              <div key={`${block.heading}-${i}`}>
+                <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                  <div className="md:col-span-4">
+                    <p className="eyebrow mb-4">
+                      {block.kicker ?? String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h2 className="display text-2xl md:text-3xl">
+                      {block.heading}
+                    </h2>
+                    {block.oneLiner && (
+                      <p className="mt-3 text-base text-muted leading-relaxed">
+                        {block.oneLiner}
+                      </p>
+                    )}
+                  </div>
+                  <div className="md:col-span-7 md:col-start-6 space-y-6">
+                    {block.body && (
+                      <p className="text-lg md:text-xl text-ink/80 leading-relaxed whitespace-pre-line">
+                        {block.body}
+                      </p>
+                    )}
+                    {block.table && (
+                      <dl className="border-t border-line">
+                        {block.table.map((row) => (
+                          <div
+                            key={row.left}
+                            className="flex flex-col gap-1 border-b border-line py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                          >
+                            <dt className="text-base text-ink/70">{row.left}</dt>
+                            <dd className="shrink-0 font-medium">{row.right}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
+                    {block.points && (
+                      <div className="space-y-5">
+                        {block.points.map((pt) => (
+                          <div key={pt.title}>
+                            <h3 className="mb-1 text-base font-semibold">
+                              {pt.title}
+                            </h3>
+                            <p className="text-base md:text-lg text-ink/70 leading-relaxed">
+                              {pt.body}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {block.callout && (
+                      <p className="border-l-2 border-ink/30 pl-5 text-lg md:text-xl font-medium leading-relaxed">
+                        {block.callout}
+                      </p>
+                    )}
+                  </div>
+                </section>
 
-      {/* Gallery */}
-      <div className="px-gutter mt-24 md:mt-36">
-        <p className="eyebrow mb-8">Gallery</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {Array.from({ length: project.gallery }).map((_, i) => (
-            <Reveal
-              key={i}
-              className={i % 3 === 0 ? "sm:col-span-2" : ""}
-            >
-              <ProjectMedia
-                src={`/work/${project.slug}/${String(i + 1).padStart(2, "0")}.jpg`}
-                accent={project.accent}
-                accentText={project.accentText}
-                label={`${project.title} ${i + 1}`}
-                className={`w-full rounded-md ${
-                  i % 3 === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
-                }`}
-              />
-            </Reveal>
-          ))}
+                {block.images && (
+                  <div
+                    className={`mt-10 grid grid-cols-1 gap-5 sm:gap-6 ${
+                      cols === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+                    }`}
+                  >
+                    {block.images.map((img) => (
+                      <Reveal key={img.src}>
+                        <figure>
+                          <ProjectMedia
+                            src={img.src}
+                            accent={project.accent}
+                            accentText={project.accentText}
+                            label={block.heading}
+                            className={`w-full rounded-md ${
+                              img.ratio ?? "aspect-[9/16]"
+                            }`}
+                            sizes={imgSizes}
+                          />
+                          {img.caption && (
+                            <figcaption className="mt-3 text-sm text-muted leading-snug">
+                              {img.caption}
+                            </figcaption>
+                          )}
+                        </figure>
+                      </Reveal>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
-      </div>
+      ) : (
+        <>
+          {/* Simple case study: text sections + gallery grid */}
+          <div className="px-gutter mt-24 md:mt-36 space-y-24 md:space-y-36">
+            {project.sections.map((section, i) => (
+              <section
+                key={section.heading}
+                className="grid grid-cols-1 md:grid-cols-12 gap-8"
+              >
+                <div className="md:col-span-4">
+                  <p className="eyebrow mb-4">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h2 className="display text-2xl md:text-3xl">
+                    {section.heading}
+                  </h2>
+                </div>
+                <div className="md:col-span-7 md:col-start-6">
+                  <p className="text-lg md:text-xl text-ink/80 leading-relaxed whitespace-pre-line">
+                    {section.body}
+                  </p>
+                </div>
+              </section>
+            ))}
+          </div>
+
+          {project.gallery > 0 && (
+            <div className="px-gutter mt-24 md:mt-36">
+              <p className="eyebrow mb-8">Gallery</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {Array.from({ length: project.gallery }).map((_, i) => (
+                  <Reveal key={i} className={i % 3 === 0 ? "sm:col-span-2" : ""}>
+                    <ProjectMedia
+                      src={`/work/${project.slug}/${String(i + 1).padStart(2, "0")}.jpg`}
+                      accent={project.accent}
+                      accentText={project.accentText}
+                      label={`${project.title} ${i + 1}`}
+                      className={`w-full rounded-md ${
+                        i % 3 === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
+                      }`}
+                    />
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )}
 
       {/* Next project */}
       <Link

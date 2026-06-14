@@ -43,6 +43,23 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/* Lenis smooth scroll: the document must be height:auto so Lenis can observe
+   content growth (lazy images, fonts) and recompute its scroll limit. The
+   `h-full` class on <html> otherwise pins it to the viewport height, which
+   leaves Lenis's max-scroll stale on tall pages (scroll gets stuck partway). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);

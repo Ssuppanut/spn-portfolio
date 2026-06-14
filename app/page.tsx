@@ -32,17 +32,6 @@ export default function Home() {
         <p className="display lowercase max-w-[22ch] text-[clamp(2.25rem,6.5vw,5.25rem)] leading-[1.08]">
           <ScrollRevealText text={site.intro} />
         </p>
-
-        <div className="mt-12 grid max-w-4xl gap-8 md:mt-16 md:grid-cols-2">
-          {site.about.map((p, i) => (
-            <p
-              key={i}
-              className="text-base leading-relaxed text-muted md:text-lg"
-            >
-              {p}
-            </p>
-          ))}
-        </div>
       </section>
     </>
   );

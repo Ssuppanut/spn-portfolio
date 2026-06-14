@@ -33,17 +33,7 @@ export default function AboutPage() {
 
       <div className="mt-20 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-7">
-          <div className="space-y-6">
-            {site.about.map((p, i) => (
-              <Reveal key={i} delay={i * 0.05}>
-                <p className="text-xl md:text-2xl leading-relaxed text-ink/80">
-                  {p}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.15} className="mt-12">
+          <Reveal>
             <ProjectMedia
               src="/about.jpg"
               accent="#3f3f46"
@@ -52,6 +42,16 @@ export default function AboutPage() {
               className="aspect-[16/10] w-full rounded-md"
             />
           </Reveal>
+
+          <div className="mt-12 space-y-6">
+            {site.about.map((p, i) => (
+              <Reveal key={i} delay={0.15 + i * 0.05}>
+                <p className="text-xl md:text-2xl leading-relaxed text-ink/80">
+                  {p}
+                </p>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="md:col-span-4 md:col-start-9 space-y-12">
