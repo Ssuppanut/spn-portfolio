@@ -34,6 +34,7 @@ export default async function CaseStudy({
 
   const idx = projects.findIndex((p) => p.slug === slug);
   const next = projects[(idx + 1) % projects.length];
+  const prev = projects[(idx - 1 + projects.length) % projects.length];
 
   const meta = [
     { label: "Client", value: project.client },
@@ -60,7 +61,7 @@ export default async function CaseStudy({
         <h1 className="display text-[clamp(2.5rem,9vw,8rem)] max-w-[14ch]">
           {project.title}
         </h1>
-        <p className="mt-8 text-xl md:text-2xl text-ink/80 max-w-2xl leading-relaxed">
+        <p className="mt-8 text-xl md:text-2xl text-ink/80 leading-relaxed">
           {project.summary}
         </p>
       </header>
@@ -80,7 +81,7 @@ export default async function CaseStudy({
       </div>
 
       {/* Meta + overview */}
-      <div className="px-gutter mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div className="px-gutter mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-x-16">
         <div className="md:col-span-4">
           <dl className="grid grid-cols-2 md:grid-cols-1 gap-y-6 gap-x-4">
             {meta.map((m) => (
@@ -117,7 +118,10 @@ export default async function CaseStudy({
 
         <div className="md:col-span-8">
           <Reveal>
-            <p className="display text-[clamp(1.5rem,3.5vw,2.75rem)] leading-[1.15]">
+            <p
+              className="display text-[clamp(1.25rem,2.8vw,2.25rem)]"
+              style={{ lineHeight: 1.2 }}
+            >
               {project.overview}
             </p>
           </Reveal>
@@ -146,7 +150,7 @@ export default async function CaseStudy({
                 : "(max-width: 768px) 100vw, 33vw";
             return (
               <div key={`${block.heading}-${i}`}>
-                <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <section className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16">
                   <div className="md:col-span-4">
                     <p className="eyebrow mb-4">
                       {block.kicker ?? String(i + 1).padStart(2, "0")}
@@ -160,7 +164,7 @@ export default async function CaseStudy({
                       </p>
                     )}
                   </div>
-                  <div className="md:col-span-7 md:col-start-6 space-y-6">
+                  <div className="md:col-span-8 space-y-6">
                     {block.body && (
                       <p className="text-lg md:text-xl text-ink/80 leading-relaxed whitespace-pre-line">
                         {block.body}
@@ -241,7 +245,7 @@ export default async function CaseStudy({
             {project.sections.map((section, i) => (
               <section
                 key={section.heading}
-                className="grid grid-cols-1 md:grid-cols-12 gap-8"
+                className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16"
               >
                 <div className="md:col-span-4">
                   <p className="eyebrow mb-4">
@@ -251,7 +255,7 @@ export default async function CaseStudy({
                     {section.heading}
                   </h2>
                 </div>
-                <div className="md:col-span-7 md:col-start-6">
+                <div className="md:col-span-8">
                   <p className="text-lg md:text-xl text-ink/80 leading-relaxed whitespace-pre-line">
                     {section.body}
                   </p>
@@ -283,21 +287,34 @@ export default async function CaseStudy({
         </>
       )}
 
-      {/* Next project */}
-      <Link
-        href={`/work/${next.slug}`}
-        className="group block px-gutter mt-32 border-t border-line pt-12"
-      >
-        <p className="eyebrow mb-4">Next project</p>
-        <div className="flex items-baseline justify-between gap-6">
-          <h2 className="display text-[clamp(2rem,7vw,6rem)] transition-transform duration-500 group-hover:translate-x-2">
-            {next.title}
-          </h2>
-          <span className="text-2xl transition-transform duration-500 group-hover:translate-x-2">
-            →
-          </span>
-        </div>
-      </Link>
+      {/* Previous / Next project — prev on the left, next on the right */}
+      <nav className="mt-32 border-t border-line pt-10 px-gutter flex items-start justify-between gap-6">
+        {/* Previous (left) */}
+        <Link href={`/work/${prev.slug}`} className="group min-w-0">
+          <p className="eyebrow mb-3">Previous project</p>
+          <div className="flex items-baseline gap-3">
+            <span className="text-2xl shrink-0 transition-transform duration-500 group-hover:-translate-x-1">
+              ←
+            </span>
+            <h2 className="display truncate text-[clamp(1.5rem,4vw,3rem)] transition-transform duration-500 group-hover:-translate-x-1">
+              {prev.title}
+            </h2>
+          </div>
+        </Link>
+
+        {/* Next (right) */}
+        <Link href={`/work/${next.slug}`} className="group min-w-0 text-right">
+          <p className="eyebrow mb-3">Next project</p>
+          <div className="flex items-baseline justify-end gap-3">
+            <h2 className="display truncate text-[clamp(1.5rem,4vw,3rem)] transition-transform duration-500 group-hover:translate-x-1">
+              {next.title}
+            </h2>
+            <span className="text-2xl shrink-0 transition-transform duration-500 group-hover:translate-x-1">
+              →
+            </span>
+          </div>
+        </Link>
+      </nav>
     </article>
   );
 }

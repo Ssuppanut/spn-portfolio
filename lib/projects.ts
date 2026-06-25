@@ -108,7 +108,7 @@ const projectList: Project[] = [
     title: "K PLUS Investment",
     category: "UX/UI Design",
     summary:
-      "Designed the investment experience for Thailand's most-used banking app — bringing investing directly to millions of K PLUS users.",
+      "Designed the investment experience for Thailand's most-used banking app, bringing investing directly to millions of K PLUS users.",
     client: "Kasikorn Bank",
     role: "Senior UX/UI Designer",
     year: "2024",
@@ -120,16 +120,16 @@ const projectList: Project[] = [
     tools: "Figma, Adobe Creative Suite, Overflow",
     methods: "Wireframing, Prototyping, Usability Testing, Empathy & Journey Mapping",
     overview:
-      "K PLUS Investment is a financial and investment experience built into K PLUS — Thailand's most-used banking app. It offers a wide range of investment assets from leading asset management companies, with tools that make investing timely and accessible: recommended funds, price alerts, tax-saving fund summaries, and buy/sell gold online. The goal was an experience that feels native to K PLUS while serving everyone from first-time investors to seasoned fund holders.",
+      "K PLUS Investment is a financial and investment experience built into K PLUS, Thailand's most-used banking app. It offers a wide range of investment assets from leading asset management companies, with tools that make investing timely and accessible: recommended funds, price alerts, tax-saving fund summaries, and buy/sell gold online. The goal was an experience that feels native to K PLUS while serving everyone from first-time investors to seasoned fund holders.",
     // Simple fallback (unused while `caseStudy` is present)
     sections: [
       {
         heading: "The problem",
-        body: "K PLUS Investment moved from a standalone app into a dedicated feature inside the K PLUS ecosystem — so it had to feel native to an app millions already use daily, while serving both first-time and experienced investors.",
+        body: "K PLUS Investment moved from a standalone app into a dedicated feature inside the K PLUS ecosystem, so it had to feel native to an app millions already use daily, while serving both first-time and experienced investors.",
       },
       {
         heading: "Approach",
-        body: "Discovery surfaced three pain points — not knowing where to start, losing track of holdings, and slow fund search — which shaped six features that make investing accessible from the first fund to complex portfolios.",
+        body: "Discovery surfaced three pain points, not knowing where to start, losing track of holdings, and slow fund search, which shaped six features that make investing accessible from the first fund to complex portfolios.",
       },
       {
         heading: "Outcome",
@@ -152,21 +152,21 @@ const projectList: Project[] = [
           },
           {
             title: "As UX Designer",
-            body: "Discovered user needs and pain points, brainstormed ideas with the team, and developed features from findings — building medium-fidelity wireframes and prototypes to communicate ideas and gather feedback.",
+            body: "Discovered user needs and pain points, brainstormed ideas with the team, and developed features from findings, building medium-fidelity wireframes and prototypes to communicate ideas and gather feedback.",
           },
         ],
       },
       {
         kicker: "The story",
         heading: "The problem",
-        body: `K PLUS Investment began as a standalone investment application. As the product direction evolved, Kasikorn Bank decided to consolidate it as a dedicated investment feature within the existing K PLUS ecosystem — bringing investing directly into the app millions of users already rely on daily.
+        body: `K PLUS Investment began as a standalone investment application. As the product direction evolved, Kasikorn Bank decided to consolidate it as a dedicated investment feature within the existing K PLUS ecosystem, bringing investing directly into the app millions of users already rely on daily.
 
 This shift meant we weren't just designing an investment product. We were designing an experience that had to feel native to K PLUS while serving users who ranged from first-time investors to seasoned fund holders.`,
       },
       {
         kicker: "The story",
         heading: "What we discovered",
-        body: "Through desk research and competitor analysis, three recurring pain points emerged from investment app users — each pointing to a clear design priority.",
+        body: "Through desk research and competitor analysis, three recurring pain points emerged from investment app users, each pointing to a clear design priority.",
         table: [
           { left: "“I don't know where to start.”", right: "Simplify discovery" },
           { left: "“I forgot what I was holding.”", right: "Surface portfolio at a glance" },
@@ -176,7 +176,7 @@ This shift meant we weren't just designing an investment product. We were design
       {
         kicker: "Foundation",
         heading: "Design foundation",
-        body: `The design system balances K PLUS's established brand identity with the needs of a financial product — where clarity, trust, and data legibility come first.
+        body: `The design system balances K PLUS's established brand identity with the needs of a financial product, where clarity, trust, and data legibility come first.
 
 Typography prioritizes readability of numbers and financial data at a glance. The palette extends K PLUS's existing green brand while introducing semantic colors for investment-specific states: gains, losses, neutral performance, and alerts.`,
         images: [
@@ -192,11 +192,11 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
         points: [
           {
             title: "Solution",
-            body: "I created a new semantic color system that supports each component while preserving the existing structure — enabling future theme variations without changing the underlying component code, across both General and Wisdom themes.",
+            body: "I created a new semantic color system that supports each component while preserving the existing structure, enabling future theme variations without changing the underlying component code, across both General and Wisdom themes.",
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/theme-01.jpg", caption: "Theme color comparison — General vs Wisdom" },
+          { src: "/work/k-plus-investment/theme-01.jpg", caption: "Theme color comparison, General vs Wisdom" },
           { src: "/work/k-plus-investment/theme-02.jpg", caption: "Final screens across themes" },
         ],
         imageCols: 2,
@@ -217,20 +217,20 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
           {
             title: "Surfacing matured funds upfront",
-            body: "Placed a dedicated “Matured Funds” tab at the top, separating sell-eligible holdings from the rest — turning a hidden status into the first thing users see.",
+            body: "Placed a dedicated “Matured Funds” tab at the top, separating sell-eligible holdings from the rest, turning a hidden status into the first thing users see.",
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/tax-01.jpg", caption: "Yearly summary — total deductible with breakdown by fund type" },
-          { src: "/work/k-plus-investment/tax-02.jpg", caption: "Fund type detail — purchases and holding status" },
-          { src: "/work/k-plus-investment/tax-03.jpg", caption: "Matured funds — met holding criteria and ready to sell" },
+          { src: "/work/k-plus-investment/tax-01.jpg", caption: "Yearly summary, total deductible with breakdown by fund type" },
+          { src: "/work/k-plus-investment/tax-02.jpg", caption: "Fund type detail, purchases and holding status" },
+          { src: "/work/k-plus-investment/tax-03.jpg", caption: "Matured funds, met holding criteria and ready to sell" },
         ],
       },
       {
         kicker: "Feature 03",
         heading: "Portfolio",
         oneLiner: "A unified view consolidating every asset type a user holds, from mutual funds to gold.",
-        body: "K PLUS Investment offers a wide range of assets, but users holding multiple types had no single place to see them together — they had to navigate between sections and mentally piece together their financial position.",
+        body: "K PLUS Investment offers a wide range of assets, but users holding multiple types had no single place to see them together, they had to navigate between sections and mentally piece together their financial position.",
         points: [
           {
             title: "Unifying diverse asset types in one view",
@@ -238,25 +238,25 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
           {
             title: "Information architecture for scalability",
-            body: "Before designing screens, I mapped the full IA so Portfolio could accommodate every asset type K PLUS offers — and future additions. This groundwork shaped how data is grouped, organized, and navigated.",
+            body: "Before designing screens, I mapped the full IA so Portfolio could accommodate every asset type K PLUS offers, and future additions. This groundwork shaped how data is grouped, organized, and navigated.",
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/portfolio-ia.jpg", caption: "Information architecture — from overview to holding detail", ratio: "aspect-[16/9]" },
-          { src: "/work/k-plus-investment/portfolio-01.jpg", caption: "Portfolio overview — total value with allocation breakdown" },
-          { src: "/work/k-plus-investment/portfolio-02.jpg", caption: "Asset type breakdown — grouped by category" },
-          { src: "/work/k-plus-investment/portfolio-03.jpg", caption: "Individual asset detail — performance & history" },
+          { src: "/work/k-plus-investment/portfolio-ia.jpg", caption: "Information architecture, from overview to holding detail", ratio: "aspect-[16/9]" },
+          { src: "/work/k-plus-investment/portfolio-01.jpg", caption: "Portfolio overview, total value with allocation breakdown" },
+          { src: "/work/k-plus-investment/portfolio-02.jpg", caption: "Asset type breakdown, grouped by category" },
+          { src: "/work/k-plus-investment/portfolio-03.jpg", caption: "Individual asset detail, performance & history" },
         ],
       },
       {
         kicker: "Feature 04",
         heading: "Asset Alert",
         oneLiner: "A custom price-notification system letting investors act on opportunities without constant monitoring.",
-        body: "Active investors miss buy/sell opportunities because fund prices fluctuate constantly, and they had no way to monitor multiple funds at once — forcing them to compare prices manually or rely on memory.",
+        body: "Active investors miss buy/sell opportunities because fund prices fluctuate constantly, and they had no way to monitor multiple funds at once, forcing them to compare prices manually or rely on memory.",
         points: [
           {
             title: "Supporting multiple alert types in a single flow",
-            body: "Designed a unified setup where users select alert type, direction, and threshold in one continuous flow — reducing decision fatigue while covering every common use case.",
+            body: "Designed a unified setup where users select alert type, direction, and threshold in one continuous flow, reducing decision fatigue while covering every common use case.",
           },
           {
             title: "Making multi-alert management effortless",
@@ -264,59 +264,59 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
         ],
         callout:
-          "Over 90% of participants completed the full alert setup flow successfully on the first attempt — indicating the interaction model was intuitive across user types.",
+          "Over 90% of participants completed the full alert setup flow successfully on the first attempt, indicating the interaction model was intuitive across user types.",
         images: [
-          { src: "/work/k-plus-investment/alert-01.jpg", caption: "Alert setup — type, direction, threshold in one flow" },
-          { src: "/work/k-plus-investment/alert-02.jpg", caption: "Confirmation — review before confirming" },
-          { src: "/work/k-plus-investment/alert-03.jpg", caption: "Alert list — scannable with quick management actions" },
+          { src: "/work/k-plus-investment/alert-01.jpg", caption: "Alert setup, type, direction, threshold in one flow" },
+          { src: "/work/k-plus-investment/alert-02.jpg", caption: "Confirmation, review before confirming" },
+          { src: "/work/k-plus-investment/alert-03.jpg", caption: "Alert list, scannable with quick management actions" },
         ],
       },
       {
         kicker: "Feature 05",
         heading: "Transaction History",
         oneLiner: "An audit trail of all investment activity, designed to make high-volume data feel manageable.",
-        body: "Users come to transaction history with intent, not curiosity — trying to answer a specific question. But long lists with no structure, ambiguous status, and a mental model fragmented across asset types kept them from getting answers quickly.",
+        body: "Users come to transaction history with intent, not curiosity, trying to answer a specific question. But long lists with no structure, ambiguous status, and a mental model fragmented across asset types kept them from getting answers quickly.",
         points: [
           {
-            title: "Grouping by date — turning reading into scanning",
-            body: "By grouping transactions under date headers, I shifted the interaction from “read every entry” to “find the right time period, then look” — leveraging how users actually remember financial events.",
+            title: "Grouping by date, turning reading into scanning",
+            body: "By grouping transactions under date headers, I shifted the interaction from “read every entry” to “find the right time period, then look”, leveraging how users actually remember financial events.",
           },
           {
-            title: "A unified feed — designing for the user's mental model",
+            title: "A unified feed, designing for the user's mental model",
             body: "Different assets have different transaction structures, but users think of their activity as one history. I chose a single consolidated feed with a fixed card anatomy plus variable secondary data that adapts to each asset.",
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/history-01.jpg", caption: "Consolidated feed — chronological, grouped by date" },
-          { src: "/work/k-plus-investment/history-02.jpg", caption: "Filtered view — narrow to type, asset, or period" },
-          { src: "/work/k-plus-investment/history-03.jpg", caption: "Transaction detail — full context on demand" },
+          { src: "/work/k-plus-investment/history-01.jpg", caption: "Consolidated feed, chronological, grouped by date" },
+          { src: "/work/k-plus-investment/history-02.jpg", caption: "Filtered view, narrow to type, asset, or period" },
+          { src: "/work/k-plus-investment/history-03.jpg", caption: "Transaction detail, full context on demand" },
         ],
       },
       {
         kicker: "Feature 06",
         heading: "Investment",
-        oneLiner: "The gateway to every asset type K PLUS offers — designed as a decision aid, not a menu.",
-        body: "Users arrive at investment screens in one of two mindsets: knowing exactly what they want, or having no idea where to start. The previous experience served neither — entry points were hidden, and users had no guidance on what fit them.",
+        oneLiner: "The gateway to every asset type K PLUS offers, designed as a decision aid, not a menu.",
+        body: "Users arrive at investment screens in one of two mindsets: knowing exactly what they want, or having no idea where to start. The previous experience served neither, entry points were hidden, and users had no guidance on what fit them.",
         points: [
           {
             title: "Hierarchy through user intent, not product taxonomy",
-            body: "Ordered asset types by user accessibility rather than alphabetically or by internal structure — placing familiar, low-barrier assets (mutual funds) above specialized instruments (structured notes). The layout signals where most investors typically begin.",
+            body: "Ordered asset types by user accessibility rather than alphabetically or by internal structure, placing familiar, low-barrier assets (mutual funds) above specialized instruments (structured notes). The layout signals where most investors typically begin.",
           },
           {
             title: "An entry point as a decision aid, not a directory",
-            body: "Each tile surfaces three things per asset: what it is, why someone would choose it, and a clear entry action — turning each tile from a destination into a decision moment.",
+            body: "Each tile surfaces three things per asset: what it is, why someone would choose it, and a clear entry action, turning each tile from a destination into a decision moment.",
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/investment-01.jpg", caption: "Investment hub — asset types ordered by accessibility" },
-          { src: "/work/k-plus-investment/investment-02.jpg", caption: "Asset entry — cards that help users self-qualify" },
-          { src: "/work/k-plus-investment/investment-03.jpg", caption: "Category drill-down — hand-off to the dedicated flow" },
+          { src: "/work/k-plus-investment/investment-01.jpg", caption: "Investment hub, asset types ordered by accessibility" },
+          { src: "/work/k-plus-investment/investment-02.jpg", caption: "Asset entry, cards that help users self-qualify" },
+          { src: "/work/k-plus-investment/investment-03.jpg", caption: "Category drill-down, hand-off to the dedicated flow" },
         ],
       },
       {
         kicker: "Process",
         heading: "Collaboration & development",
-        body: "I led collaboration across the project lifecycle — facilitating a stakeholder workshop before kickoff to align on the design vision, running weekly critiques to keep cross-functional teams in sync, and using post-launch user feedback to guide a second round of refinements.",
+        body: "I led collaboration across the project lifecycle, facilitating a stakeholder workshop before kickoff to align on the design vision, running weekly critiques to keep cross-functional teams in sync, and using post-launch user feedback to guide a second round of refinements.",
         points: [
           { title: "Main page", body: "Restructured information hierarchy for faster scanning." },
           { title: "Portfolio", body: "Surfaced performance metrics more prominently." },
@@ -325,17 +325,17 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           { title: "Watchlist", body: "Added quick actions for managing tracked funds." },
         ],
         images: [
-          { src: "/work/k-plus-investment/dev-main-before.jpg", caption: "Main page — before" },
-          { src: "/work/k-plus-investment/dev-main-after.jpg", caption: "Main page — after" },
-          { src: "/work/k-plus-investment/dev-portfolio-before.jpg", caption: "Portfolio — before" },
-          { src: "/work/k-plus-investment/dev-portfolio-after.jpg", caption: "Portfolio — after" },
+          { src: "/work/k-plus-investment/dev-main-before.jpg", caption: "Main page, before" },
+          { src: "/work/k-plus-investment/dev-main-after.jpg", caption: "Main page, after" },
+          { src: "/work/k-plus-investment/dev-portfolio-before.jpg", caption: "Portfolio, before" },
+          { src: "/work/k-plus-investment/dev-portfolio-after.jpg", caption: "Portfolio, after" },
         ],
         imageCols: 2,
       },
       {
         kicker: "Outcome",
         heading: "Outcome",
-        body: "Launched as part of the K PLUS app — Thailand's most-used banking app, serving millions of users daily. The investment feature is now an active part of the K PLUS experience, with users engaging across all six feature areas designed.",
+        body: "Launched as part of the K PLUS app, Thailand's most-used banking app, serving millions of users daily. The investment feature is now an active part of the K PLUS experience, with users engaging across all six feature areas designed.",
       },
     ],
   },
