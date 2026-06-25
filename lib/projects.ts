@@ -412,20 +412,175 @@ Streamline the transfer channel selection process.`,
     gallery: 4,
   },
   {
-    slug: "skl-connect",
-    title: "SKL Connect",
+    slug: "kublerx",
+    title: "Kublerx",
     category: "UX/UI Design",
-    summary: "A leasing & financing companion app built around real customer journeys.",
-    client: "Saksiam Leasing",
-    role: "UX/UI Designer",
-    year: "2022",
-    tags: ["Fintech", "Mobile", "Leasing"],
-    accent: "#9a3412",
+    summary:
+      "A decentralized exchange (DEX) bringing DeFi to everyday crypto users on KUB Chain.",
+    client: "Bitkub",
+    role: "Senior UX/UI Designer",
+    year: "2025",
+    tags: ["DeFi", "Crypto", "DEX", "Design System"],
+    accent: "#047857",
     accentText: "light",
-    overview:
-      "SKL Connect gives leasing customers a clear view of their contracts, payments and services — turning paperwork-heavy processes into a few taps.",
-    sections: placeholderSections("SKL Connect"),
-    gallery: 4,
+    platform: "Desktop, Tablet, Mobile",
+    tools: "Figma, Adobe Creative Suite, Prototypes",
+    methods: "Competitive Analysis, Information Architecture, Design System, Usability Testing",
+    externalUrl: "https://kublerx.com",
+    externalLabel: "Visit kublerx.com ↗",
+    overview: `Kublerx is a decentralized exchange (DEX) built on the KUB Chain — designed to be the central liquidity hub of the KUB ecosystem. The platform lets users swap crypto, provide liquidity to earn rewards, and access DeFi tools without leaving the KUB network.
+
+Unlike traditional crypto exchanges where transactions are managed by a central party, Kublerx runs entirely on smart contracts — giving users full custody of their assets and direct access to on-chain liquidity.`,
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "The problem",
+        body: "Bitkub users were familiar with buying and holding crypto on a centralized exchange, but had never used a DEX. Kublerx had to feel approachable to those transitioning from CEX while still serving experienced DeFi traders.",
+      },
+      {
+        heading: "Approach",
+        body: "Designed end-to-end — research, IA, interaction, visual system, and handoff — translating DeFi mechanics into intuitive flows across desktop, tablet, and mobile.",
+      },
+      {
+        heading: "Outcome",
+        body: "Launched as the central liquidity hub of the KUB ecosystem, live at kublerx.com with swap and liquidity features across all platforms.",
+      },
+    ],
+    metrics: [
+      { value: "DeFi", label: "Decentralized exchange (DEX)" },
+      { value: "3", label: "Platforms — desktop, tablet, mobile" },
+    ],
+    gallery: 0,
+    caseStudy: [
+      {
+        kicker: "Role",
+        heading: "What I did",
+        body: "Led the design from concept to delivery — user research, information architecture, interaction design, visual system, and developer handoff. I collaborated closely with product managers, blockchain engineers, and stakeholders to align DeFi mechanics with intuitive experiences across desktop, tablet, and mobile.",
+      },
+      {
+        kicker: "The story",
+        heading: "The problem",
+        body: `Kublerx was built from the ground up to solve a specific gap: bringing DeFi to Thai crypto users who already live in the Bitkub ecosystem.
+
+Many Bitkub users were familiar with buying and holding crypto through the centralized exchange, but had never used a DEX before. They wanted to access DeFi opportunities — liquidity pools, swaps, and on-chain trading — without leaving the network they already trusted.
+
+The challenge wasn't just designing another DEX. It was designing a DEX that felt approachable to users transitioning from centralized exchanges, while still serving the depth that experienced DeFi traders expect.`,
+      },
+      {
+        kicker: "Discovery",
+        heading: "Discovery & research",
+        body: "Three core insights shaped the design direction.",
+        points: [
+          {
+            title: "DeFi terminology creates friction",
+            body: "Concepts like liquidity pools, slippage, impermanent loss, and AMM are second nature to DeFi users but opaque to newcomers. The interface needed to explain without lecturing.",
+          },
+          {
+            title: "Centralized-exchange users expect different patterns",
+            body: "Bitkub users were used to instant order matching, hidden technical complexity, and a clear buy/sell mental model. DEX flows like approve-then-swap or connecting a wallet felt unfamiliar.",
+          },
+          {
+            title: "Mobile-first behavior, desktop-first conventions",
+            body: "Most DEX products are designed desktop-first for trader workflows. But the Bitkub user base is primarily mobile — so Kublerx had to invert the convention without losing power-user functionality.",
+          },
+        ],
+      },
+      {
+        kicker: "Foundation",
+        heading: "Design foundation",
+        body: "The design system balanced two opposing needs: making DeFi feel approachable for first-time users, while preserving the data density and precision experienced traders expect.",
+        points: [
+          {
+            title: "Typography",
+            body: "Prioritizes legibility of numbers and ratios — critical for prices, slippage tolerances, and liquidity figures.",
+          },
+          {
+            title: "Color palette",
+            body: "Extends the KUB ecosystem's visual identity while introducing semantic colors for DeFi-specific states: gains, losses, pending transactions, and warning thresholds.",
+          },
+          {
+            title: "Responsive system",
+            body: "Designed mobile-first then scaled up, ensuring no functionality was sacrificed at smaller breakpoints.",
+          },
+        ],
+        images: [
+          { src: "/work/kublerx/foundation.jpg", caption: "Color palette & typography specimen", ratio: "aspect-[16/10]" },
+        ],
+        imageCols: 2,
+      },
+      {
+        kicker: "Feature 01",
+        heading: "Swap",
+        oneLiner: "A streamlined token swap interface designed to lower the barrier for first-time DEX users.",
+        points: [
+          {
+            title: "Hiding complexity, surfacing essentials",
+            body: "Instead of exposing every DeFi parameter upfront (slippage, gas, route, minimum received), I designed layered disclosure — showing only the essential from / to / rate by default, with advanced settings tucked behind a clear secondary action.",
+          },
+          {
+            title: "Real-time feedback at every step",
+            body: "Price quotes, slippage warnings, and transaction states surface immediately rather than only at confirmation. Users always know what's happening before they commit.",
+          },
+          {
+            title: "Trust through transparency",
+            body: "Every step — wallet connection, token approval, transaction signing — is visualized with clear status indicators, so users moving from a centralized exchange understand what each on-chain step means.",
+          },
+        ],
+        images: [
+          { src: "/work/kublerx/swap-01.jpg", caption: "Swap interface — token selection, rate, and execution in one flow" },
+          { src: "/work/kublerx/swap-02.jpg", caption: "Slippage settings — advanced parameters on demand" },
+          { src: "/work/kublerx/swap-03.jpg", caption: "Transaction confirmation — every on-chain step visualized" },
+        ],
+      },
+      {
+        kicker: "Feature 02",
+        heading: "Liquidity Pools",
+        oneLiner: "A liquidity provision experience that makes passive yield accessible without requiring users to master the mechanics first.",
+        points: [
+          {
+            title: "Pool discovery designed for clarity, not just data",
+            body: "Each pool surfaces what matters most — APR, TVL, paired tokens, and risk indicators — without burying them under technical metrics. Users filter and sort by what they care about rather than navigating a flat list.",
+          },
+          {
+            title: "Progressive disclosure for pool management",
+            body: "Adding liquidity, claiming rewards, and removing liquidity each have their own focused flow. Users don't see options they don't need at the moment they're acting.",
+          },
+          {
+            title: "Educational moments without disruption",
+            body: "Concepts like impermanent loss are introduced inline at the point of decision — short, contextual explanations that empower users without forcing them through a tutorial.",
+          },
+        ],
+        images: [
+          { src: "/work/kublerx/pool-01.jpg", caption: "Pool discovery — sortable, filterable list with key metrics" },
+          { src: "/work/kublerx/pool-02.jpg", caption: "Add liquidity — focused flow for a selected pool" },
+          { src: "/work/kublerx/pool-03.jpg", caption: "Position management — claim rewards & remove liquidity" },
+        ],
+      },
+      {
+        kicker: "Craft",
+        heading: "Responsive across platforms",
+        body: "Designed mobile-first, then scaled up — keeping full functionality at every breakpoint for both newcomers and power users.",
+        images: [
+          { src: "/work/kublerx/responsive-desktop.jpg", caption: "Desktop — full trading interface with extended data", ratio: "aspect-[16/10]" },
+          { src: "/work/kublerx/responsive-tablet.jpg", caption: "Tablet — adapted layout, all functionality intact", ratio: "aspect-[3/4]" },
+          { src: "/work/kublerx/responsive-mobile.jpg", caption: "Mobile — patterns optimized for one-handed use" },
+        ],
+      },
+      {
+        kicker: "Process",
+        heading: "Collaboration",
+        body: `I led collaboration across the project lifecycle — running stakeholder alignment workshops at kickoff to define product vision, partnering with blockchain engineers to understand on-chain constraints, and conducting weekly design critiques with the broader Bitkub design team to keep the design system consistent across the ecosystem.
+
+Working closely with product managers and developers throughout, I translated technical blockchain requirements into design decisions that protected the user experience without compromising the underlying protocol.`,
+      },
+      {
+        kicker: "Outcome",
+        heading: "Outcome",
+        body: `Kublerx successfully launched as the central liquidity hub for the KUB ecosystem — making DeFi accessible to Thai crypto users transitioning from centralized exchanges. The platform is now live at kublerx.com, supporting swap and liquidity features across desktop, tablet, and mobile.
+
+The design bridged two audiences: bringing newcomers into DeFi through approachable patterns, while still serving experienced traders with the depth and precision they expect.`,
+      },
+    ],
   },
   {
     slug: "daily-ui-challenge",
@@ -642,6 +797,7 @@ const order = [
   "staygold",
   "bitkub-next",
   "de-fence",
+  "kublerx",
   "finvest-redesign",
   "cargo-work",
   "tossakan",
@@ -651,7 +807,6 @@ const order = [
   "astro-solutions",
   "airport-thailand",
   "unicorn-house",
-  "skl-connect",
 ];
 
 export const projects: Project[] = order
