@@ -640,7 +640,58 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
         body: "Prepared screens, user flows, design tokens, component states, and detailed specifications for handoff to the development team for implementation.",
       },
     ],
-    gallery: 4,
+    caseStudy: [
+      {
+        kicker: "Discover",
+        heading: "From insights to decisions",
+        body: "I began by collaborating with stakeholders and gathering requirements to ground the work in both user needs and business objectives. I then established the information architecture for smooth, intuitive navigation, and ran desk research, competitor benchmarking, and small-scale user interviews. A few recurring quotes shaped the product — each pointing to a specific design decision.",
+        table: [
+          {
+            left: "“I won't go if I have to exercise alone.”",
+            right: "Designed **social features** that let users **invite friends to exercise sessions** and **join community challenges**.",
+          },
+          {
+            left: "“I want to track and review my health history.”",
+            right: "A personalized **health dashboard** displaying **trends over time** instead of just a daily overview, and showing users' **average BMI** visually.",
+          },
+          {
+            left: "“Seeing others run long distances makes me feel discouraged.”",
+            right: "Added **daily challenges** and **rewards for major achievements** or campaign activities, instead of intimidating comparisons.",
+          },
+          {
+            left: "“It would be great to have health-related knowledge.”",
+            right: "An integrated content feed with **curated articles from health experts**, aligning with users' tracking behaviours.",
+          },
+        ],
+      },
+      {
+        kicker: "Design",
+        heading: "Design system & UI",
+        body: "With this groundwork in place, I built a design system and moved on to high-fidelity interfaces that reflected the brand's visual identity while keeping usability and accessibility at the core. Due to time constraints, I ran quick internal testing sessions and iterated on feedback to validate the key decisions.",
+        points: [
+          {
+            title: "Premium warmth",
+            body: "Positioning wellness as something to elevate, not just monitor — a sophisticated yet warm palette and type that stay approachable.",
+          },
+          {
+            title: "Accessible by default",
+            body: "Components meet WCAG AA contrast, with type scales tested across age groups.",
+          },
+          {
+            title: "Component-first architecture",
+            body: "Tokens and components structured so developers can implement and extend without a designer for every variant.",
+          },
+        ],
+        callout:
+          "Stakeholder feedback led to three refinements: the Health screen surfaces personal data at a glance, the Challenge screen puts today's active challenges above historical ones, and the Leaderboard gives points, ranking, and streak count a stronger visual hierarchy.",
+      },
+      {
+        kicker: "Deliver",
+        heading: "Handoff",
+        body: "Prepared screens, user flows, design tokens, component states, and detailed specifications for handoff to the development team for implementation.",
+      },
+    ],
+    gallery: 0,
   },
   {
     slug: "de-fence",

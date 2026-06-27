@@ -5,6 +5,19 @@ import { ProjectMedia } from "@/components/project-media";
 import { Reveal } from "@/components/reveal";
 import { getProject, projects } from "@/lib/projects";
 
+/** Renders text with `**phrase**` segments highlighted (theme-aware gold). */
+function highlight(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className="hl font-medium">
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+}
+
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -33,8 +46,8 @@ export default async function CaseStudy({
   if (!project) notFound();
 
   const idx = projects.findIndex((p) => p.slug === slug);
-  const next = projects[(idx + 1) % projects.length];
-  const prev = projects[(idx - 1 + projects.length) % projects.length];
+  // the next three projects (wrapping) shown as "more to read" cards
+  const more = [1, 2, 3].map((o) => projects[(idx + o) % projects.length]);
 
   const meta = [
     { label: "Client", value: project.client },
@@ -175,10 +188,20 @@ export default async function CaseStudy({
                         {block.table.map((row) => (
                           <div
                             key={row.left}
-                            className="flex flex-col gap-1 border-b border-line py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                            className="grid grid-cols-1 items-start gap-2 border-b border-line py-5 sm:grid-cols-[1fr_auto_1.5fr] sm:gap-5"
                           >
-                            <dt className="text-base text-ink/70">{row.left}</dt>
-                            <dd className="shrink-0 font-medium">{row.right}</dd>
+                            <dt className="text-base text-ink/70">
+                              {highlight(row.left)}
+                            </dt>
+                            <span
+                              aria-hidden
+                              className="hidden text-muted sm:block sm:pt-1"
+                            >
+                              →
+                            </span>
+                            <dd className="text-base leading-relaxed">
+                              {highlight(row.right)}
+                            </dd>
                           </div>
                         ))}
                       </dl>
@@ -287,34 +310,62 @@ export default async function CaseStudy({
         </>
       )}
 
-      {/* Previous / Next project — prev on the left, next on the right */}
-      <nav className="mt-32 border-t border-line pt-10 px-gutter flex items-start justify-between gap-6">
-        {/* Previous (left) */}
-        <Link href={`/work/${prev.slug}`} className="group min-w-0">
-          <p className="eyebrow mb-3">Previous project</p>
-          <div className="flex items-baseline gap-3">
-            <span className="text-2xl shrink-0 transition-transform duration-500 group-hover:-translate-x-1">
-              ←
-            </span>
-            <h2 className="display truncate text-[clamp(1.5rem,4vw,3rem)] transition-transform duration-500 group-hover:-translate-x-1">
-              {prev.title}
+      {/* More projects to read */}
+      <section className="px-gutter mt-32 md:mt-44 border-t border-line pt-14 md:pt-20 pb-32 md:pb-48">
+        <div className="mb-12 flex items-end justify-between gap-6 md:mb-16">
+          <div>
+            <p className="eyebrow mb-4">Continue exploring</p>
+            <h2 className="display text-[clamp(1.75rem,5vw,3.5rem)] leading-none">
+              More projects to read.
             </h2>
           </div>
-        </Link>
+          <Link
+            href="/work"
+            className="hidden shrink-0 items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-medium uppercase tracking-widest transition-colors hover:bg-ink/5 sm:inline-flex"
+          >
+            See all work
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
 
-        {/* Next (right) */}
-        <Link href={`/work/${next.slug}`} className="group min-w-0 text-right">
-          <p className="eyebrow mb-3">Next project</p>
-          <div className="flex items-baseline justify-end gap-3">
-            <h2 className="display truncate text-[clamp(1.5rem,4vw,3rem)] transition-transform duration-500 group-hover:translate-x-1">
-              {next.title}
-            </h2>
-            <span className="text-2xl shrink-0 transition-transform duration-500 group-hover:translate-x-1">
-              →
-            </span>
-          </div>
+        <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8">
+          {more.map((p) => (
+            <Reveal key={p.slug}>
+              <Link href={`/work/${p.slug}`} className="group block">
+                <div className="overflow-hidden rounded-md">
+                  <ProjectMedia
+                    src={`/work/${p.slug}/cover.jpg`}
+                    accent={p.accent}
+                    accentText={p.accentText}
+                    label={p.title}
+                    className="aspect-[16/10] w-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="mt-4 flex items-center justify-between gap-4">
+                  <p className="eyebrow">{p.category}</p>
+                  <p className="eyebrow">{p.year}</p>
+                </div>
+                <h3 className="display mt-2 text-xl md:text-2xl transition-transform duration-500 group-hover:translate-x-1">
+                  {p.title}
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-muted">
+                  {p.summary}
+                </p>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* mobile-only see all */}
+        <Link
+          href="/work"
+          className="mt-12 inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-medium uppercase tracking-widest transition-colors hover:bg-ink/5 sm:hidden"
+        >
+          See all work
+          <span aria-hidden>→</span>
         </Link>
-      </nav>
+      </section>
     </article>
   );
 }

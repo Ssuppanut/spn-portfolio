@@ -24,6 +24,8 @@
   --muted: #6b6760;
   --line: rgba(18, 18, 17, 0.12);
   --accent: #1f1f1d;
+  /* in-copy highlight — deeper gold so it stays legible on the light paper */
+  --highlight: #836a1f;
   color-scheme: light;
 }
 
@@ -34,7 +36,14 @@
   --muted: #84817b;
   --line: rgba(244, 242, 236, 0.14);
   --accent: #f4f2ec;
+  /* pale gold, matching the reference, bright on near-black */
+  --highlight: #e7d9a6;
   color-scheme: dark;
+}
+
+/* highlighted phrase inside case-study copy */
+.hl {
+  color: var(--highlight);
 }
 
 html {

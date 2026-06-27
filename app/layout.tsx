@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Rubik_Glitch } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { ScrollStage } from "@/components/scroll-stage";
+import { SiteBackground } from "@/components/site-background";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ThemeProvider } from "@/components/theme-provider";
 import { site } from "@/lib/site";
@@ -50,6 +51,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen">
         <ThemeProvider>
+          <SiteBackground />
           <SmoothScroll>
             <Nav />
             <ScrollStage>

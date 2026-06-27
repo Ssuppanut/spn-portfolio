@@ -23,9 +23,10 @@ export default function Home() {
           </h3>
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 rounded-xl bg-ink/10 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-ink/20"
+            className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-medium uppercase tracking-widest text-ink transition-colors hover:bg-ink/5"
           >
             Show more
+            <span aria-hidden>→</span>
           </Link>
         </div>
 
