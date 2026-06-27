@@ -77,7 +77,7 @@ export function ProjectMedia({
           serves modern formats and lazy-loads it — same crop, far less bytes. */}
       <Image
         ref={imgRef}
-        src={src}
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${src}`}
         alt={label}
         fill
         sizes={sizes}

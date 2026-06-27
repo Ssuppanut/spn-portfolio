@@ -50,7 +50,7 @@ export function Portrait({
       </div>
       <Image
         ref={imgRef}
-        src={src}
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${src}`}
         alt={label}
         fill
         sizes="(max-width: 768px) 40vw, 320px"
