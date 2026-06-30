@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FeatureShowcase } from "@/components/feature-showcase";
+import { ImageAutoSlider } from "@/components/image-auto-slider";
 import { ProjectMedia } from "@/components/project-media";
 import { Reveal } from "@/components/reveal";
 import { getProject, projects } from "@/lib/projects";
@@ -155,16 +157,40 @@ export default async function CaseStudy({
       {project.caseStudy ? (
         /* Rich, flagship case study: text blocks + per-section captioned screens */
         <div className="px-gutter mt-24 md:mt-36 space-y-24 md:space-y-36">
-          {project.caseStudy.map((block, i) => {
-            const cols = block.imageCols ?? 3;
-            const imgSizes =
-              cols === 2
-                ? "(max-width: 768px) 100vw, 50vw"
-                : "(max-width: 768px) 100vw, 33vw";
-            return (
+          {(() => {
+            const isFeature = (b: (typeof project.caseStudy)[number]) =>
+              b.kicker?.toLowerCase().startsWith("feature");
+            const featureBlocks = project.caseStudy!.filter(isFeature);
+            const firstFeatureIdx = project.caseStudy!.findIndex(isFeature);
+            return project.caseStudy!.map((block, i) => {
+              // collapse the contiguous run of feature blocks into one sticky
+              // index + scrolling-content showcase, rendered at the first feature
+              if (isFeature(block)) {
+                if (i !== firstFeatureIdx) return null;
+                return (
+                  <FeatureShowcase
+                    key="feature-showcase"
+                    features={featureBlocks}
+                    accent={project.accent}
+                    accentText={project.accentText}
+                  />
+                );
+              }
+              const cols = block.imageCols ?? 3;
+              const imgSizes =
+                cols === 3
+                  ? "(max-width: 768px) 100vw, 33vw"
+                  : "(max-width: 768px) 100vw, 50vw";
+              return (
               <div key={`${block.heading}-${i}`}>
                 <section className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16">
-                  <div className="md:col-span-4">
+                  <div
+                    className={`md:col-span-4 ${
+                      block.lessons
+                        ? "md:sticky md:top-28 md:self-start"
+                        : ""
+                    }`}
+                  >
                     <p className="eyebrow mb-4">
                       {block.kicker ?? String(i + 1).padStart(2, "0")}
                     </p>
@@ -225,41 +251,87 @@ export default async function CaseStudy({
                         {block.callout}
                       </p>
                     )}
+                    {block.lessons && (
+                      <div className="space-y-14 md:space-y-16">
+                        {block.lessons.map((lesson, li) => (
+                          <Reveal
+                            key={lesson.heading}
+                            className={
+                              li > 0
+                                ? "border-t border-line pt-14 md:pt-16"
+                                : ""
+                            }
+                          >
+                            <h3 className="display text-2xl leading-tight md:text-3xl">
+                              {lesson.heading}
+                            </h3>
+                            <p className="mt-4 text-lg leading-relaxed text-muted md:text-xl">
+                              {lesson.body}
+                            </p>
+                            <div className="mt-7 rounded-2xl border border-line bg-ink/[0.03] p-5 sm:p-6">
+                              <span className="block text-base font-bold uppercase text-[#00BD67] md:text-lg">
+                                Now
+                              </span>
+                              <p className="mt-0.5 text-base italic leading-relaxed text-ink/85 md:text-lg">
+                                {lesson.now}
+                              </p>
+                            </div>
+                          </Reveal>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </section>
 
+                {block.slider && (
+                  <div className="mt-28 md:mt-32">
+                    <ImageAutoSlider
+                      images={block.slider}
+                      caption={block.sliderCaption}
+                      accent={project.accent}
+                    />
+                  </div>
+                )}
+
                 {block.images && (
                   <div
-                    className={`mt-10 grid grid-cols-1 gap-5 sm:gap-6 ${
-                      cols === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+                    className={`mt-14 grid grid-cols-1 gap-4 sm:gap-5 ${
+                      cols === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"
                     }`}
                   >
-                    {block.images.map((img) => (
-                      <Reveal key={img.src}>
-                        <figure>
+                    {block.images.map((img, j) => {
+                      const isLastOdd =
+                        cols !== 3 &&
+                        block.images!.length % 2 !== 0 &&
+                        j === block.images!.length - 1;
+                      return (
+                        <Reveal
+                          key={img.src}
+                          className={isLastOdd ? "sm:col-span-2" : ""}
+                        >
                           <ProjectMedia
                             src={img.src}
                             accent={project.accent}
                             accentText={project.accentText}
                             label={block.heading}
-                            className={`w-full rounded-md ${
+                            className={`w-full rounded-3xl ${
                               img.ratio ?? "aspect-[9/16]"
                             }`}
-                            sizes={imgSizes}
+                            sizes={
+                              isLastOdd
+                                ? "(max-width: 768px) 100vw, 100vw"
+                                : imgSizes
+                            }
                           />
-                          {img.caption && (
-                            <figcaption className="mt-3 text-sm text-muted leading-snug">
-                              {img.caption}
-                            </figcaption>
-                          )}
-                        </figure>
-                      </Reveal>
-                    ))}
+                        </Reveal>
+                      );
+                    })}
                   </div>
                 )}
               </div>
-            );
-          })}
+              );
+            });
+          })()}
         </div>
       ) : (
         <>

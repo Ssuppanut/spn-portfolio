@@ -42,10 +42,15 @@ export type RichSection = {
   table?: { left: string; right: string }[];
   /** highlighted result / pull-quote (e.g. a validation number) */
   callout?: string;
+  /** reflection list: each a principle + explanation + a "now" takeaway */
+  lessons?: { heading: string; body: string; now: string }[];
   /** screens shown below the text, each with an optional caption */
   images?: CaseImage[];
   /** columns the image row uses (default 3) */
   imageCols?: 2 | 3;
+  /** infinite auto-scroll image strip (two rows, opposite directions) */
+  slider?: string[];
+  sliderCaption?: string;
 };
 
 export type Project = {
@@ -179,10 +184,21 @@ This shift meant we weren't just designing an investment product. We were design
         body: `The design system balances K PLUS's established brand identity with the needs of a financial product, where clarity, trust, and data legibility come first.
 
 Typography prioritizes readability of numbers and financial data at a glance. The palette extends K PLUS's existing green brand while introducing semantic colors for investment-specific states: gains, losses, neutral performance, and alerts.`,
-        images: [
-          { src: "/work/k-plus-investment/foundation.jpg", caption: "Typography & semantic color system", ratio: "aspect-[16/10]" },
+        slider: [
+          "/work/k-plus-investment/foundation.jpg",
+          "/work/k-plus-investment/theme-01.jpg",
+          "/work/k-plus-investment/tax-01.jpg",
+          "/work/k-plus-investment/portfolio-01.jpg",
+          "/work/k-plus-investment/alert-01.jpg",
+          "/work/k-plus-investment/history-01.jpg",
+          "/work/k-plus-investment/investment-01.jpg",
+          "/work/k-plus-investment/theme-02.jpg",
+          "/work/k-plus-investment/tax-02.jpg",
+          "/work/k-plus-investment/portfolio-02.jpg",
+          "/work/k-plus-investment/alert-02.jpg",
+          "/work/k-plus-investment/history-02.jpg",
+          "/work/k-plus-investment/investment-02.jpg",
         ],
-        imageCols: 2,
       },
       {
         kicker: "Feature 01",
@@ -196,8 +212,8 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/theme-01.jpg", caption: "Theme color comparison, General vs Wisdom" },
-          { src: "/work/k-plus-investment/theme-02.jpg", caption: "Final screens across themes" },
+          { src: "/work/k-plus-investment/theme-01.jpg", caption: "Theme color comparison, General vs Wisdom", ratio: "aspect-[4/3]" },
+          { src: "/work/k-plus-investment/theme-02.jpg", caption: "Final screens across themes", ratio: "aspect-square" },
         ],
         imageCols: 2,
       },
@@ -221,9 +237,9 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/tax-01.jpg", caption: "Yearly summary, total deductible with breakdown by fund type" },
-          { src: "/work/k-plus-investment/tax-02.jpg", caption: "Fund type detail, purchases and holding status" },
-          { src: "/work/k-plus-investment/tax-03.jpg", caption: "Matured funds, met holding criteria and ready to sell" },
+          { src: "/work/k-plus-investment/tax-01.jpg", caption: "Yearly summary, total deductible with breakdown by fund type", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/tax-02.jpg", caption: "Fund type detail, purchases and holding status", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/tax-03.jpg", caption: "Matured funds, met holding criteria and ready to sell", ratio: "aspect-square" },
         ],
       },
       {
@@ -242,11 +258,12 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/portfolio-ia.jpg", caption: "Information architecture, from overview to holding detail", ratio: "aspect-[16/9]" },
-          { src: "/work/k-plus-investment/portfolio-01.jpg", caption: "Portfolio overview, total value with allocation breakdown" },
-          { src: "/work/k-plus-investment/portfolio-02.jpg", caption: "Asset type breakdown, grouped by category" },
-          { src: "/work/k-plus-investment/portfolio-03.jpg", caption: "Individual asset detail, performance & history" },
+          { src: "/work/k-plus-investment/portfolio-ia.jpg", caption: "Information architecture, from overview to holding detail", ratio: "aspect-[4/3]" },
+          { src: "/work/k-plus-investment/portfolio-01.jpg", caption: "Portfolio overview, total value with allocation breakdown", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/portfolio-02.jpg", caption: "Asset type breakdown, grouped by category", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/portfolio-03.jpg", caption: "Individual asset detail, performance & history", ratio: "aspect-[4/3]" },
         ],
+        imageCols: 2,
       },
       {
         kicker: "Feature 04",
@@ -266,9 +283,9 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
         callout:
           "Over 90% of participants completed the full alert setup flow successfully on the first attempt, indicating the interaction model was intuitive across user types.",
         images: [
-          { src: "/work/k-plus-investment/alert-01.jpg", caption: "Alert setup, type, direction, threshold in one flow" },
-          { src: "/work/k-plus-investment/alert-02.jpg", caption: "Confirmation, review before confirming" },
-          { src: "/work/k-plus-investment/alert-03.jpg", caption: "Alert list, scannable with quick management actions" },
+          { src: "/work/k-plus-investment/alert-01.jpg", caption: "Alert setup, type, direction, threshold in one flow", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/alert-02.jpg", caption: "Confirmation, review before confirming", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/alert-03.jpg", caption: "Alert list, scannable with quick management actions", ratio: "aspect-square" },
         ],
       },
       {
@@ -287,10 +304,10 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/history-01.jpg", caption: "Consolidated feed, chronological, grouped by date" },
-          { src: "/work/k-plus-investment/history-02.jpg", caption: "Filtered view, narrow to type, asset, or period" },
-          { src: "/work/k-plus-investment/history-03.jpg", caption: "Transaction detail, full context on demand" },
+          { src: "/work/k-plus-investment/history-01.jpg", caption: "Consolidated feed, chronological, grouped by date", ratio: "aspect-[4/3]" },
+          { src: "/work/k-plus-investment/history-02.jpg", caption: "Filtered view, narrow to type, asset, or period", ratio: "aspect-square" },
         ],
+        imageCols: 2,
       },
       {
         kicker: "Feature 06",
@@ -308,29 +325,31 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           },
         ],
         images: [
-          { src: "/work/k-plus-investment/investment-01.jpg", caption: "Investment hub, asset types ordered by accessibility" },
-          { src: "/work/k-plus-investment/investment-02.jpg", caption: "Asset entry, cards that help users self-qualify" },
-          { src: "/work/k-plus-investment/investment-03.jpg", caption: "Category drill-down, hand-off to the dedicated flow" },
+          { src: "/work/k-plus-investment/investment-01.jpg", caption: "Investment hub, asset types ordered by accessibility", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/investment-02.jpg", caption: "Asset entry, cards that help users self-qualify", ratio: "aspect-square" },
+          { src: "/work/k-plus-investment/investment-03.jpg", caption: "Category drill-down, hand-off to the dedicated flow", ratio: "aspect-square" },
         ],
       },
       {
         kicker: "Process",
         heading: "Collaboration & development",
-        body: "I led collaboration across the project lifecycle, facilitating a stakeholder workshop before kickoff to align on the design vision, running weekly critiques to keep cross-functional teams in sync, and using post-launch user feedback to guide a second round of refinements.",
-        points: [
-          { title: "Main page", body: "Restructured information hierarchy for faster scanning." },
-          { title: "Portfolio", body: "Surfaced performance metrics more prominently." },
-          { title: "Article feed", body: "Improved content discoverability." },
-          { title: "Investment", body: "Streamlined the entry point to reduce decision friction." },
-          { title: "Watchlist", body: "Added quick actions for managing tracked funds." },
+        lessons: [
+          {
+            heading: "Align the vision before the first pixel.",
+            body: "A stakeholder workshop before kickoff surfaced misaligned expectations early, when they were still cheap to resolve. The hours spent agreeing on direction saved weeks of rework downstream.",
+            now: "run a stakeholder workshop to lock the design vision before any screen gets designed.",
+          },
+          {
+            heading: "Critique is what keeps teams in sync.",
+            body: "Weekly critiques with design, product, and engineering kept everyone working from the same picture. Decisions were pressure-tested in the room instead of discovered late in handoff.",
+            now: "hold a standing weekly critique so cross-functional teams stay aligned, not just informed.",
+          },
+          {
+            heading: "Launch is the start of the feedback loop.",
+            body: "Post-launch user feedback drove a second round of refinements across the main page, portfolio, and investment entry points, the kind of calibration only real usage can reveal.",
+            now: "treat launch as the beginning of learning, and plan a refinement round around real user behaviour.",
+          },
         ],
-        images: [
-          { src: "/work/k-plus-investment/dev-main-before.jpg", caption: "Main page, before" },
-          { src: "/work/k-plus-investment/dev-main-after.jpg", caption: "Main page, after" },
-          { src: "/work/k-plus-investment/dev-portfolio-before.jpg", caption: "Portfolio, before" },
-          { src: "/work/k-plus-investment/dev-portfolio-after.jpg", caption: "Portfolio, after" },
-        ],
-        imageCols: 2,
       },
       {
         kicker: "Outcome",
@@ -346,7 +365,7 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
     summary: "A self-custody crypto wallet that makes Web3 feel as safe as mobile banking.",
     client: "Bitkub",
     role: "Senior UX/UI Designer",
-    year: "2023",
+    year: "2025",
     tags: ["Crypto", "Web3", "Blockchain", "Fintech", "Mobile"],
     accent: "#0a5f55",
     accentText: "light",
@@ -589,7 +608,7 @@ The design bridged two audiences: bringing newcomers into DeFi through approacha
     summary: "A running series of UI explorations and interaction studies.",
     client: "Personal",
     role: "UI Designer",
-    year: "Ongoing",
+    year: "2023",
     tags: ["UI", "Exploration", "Motion", "Dribbble"],
     accent: "#7c2d92",
     accentText: "light",
@@ -607,7 +626,7 @@ The design bridged two audiences: bringing newcomers into DeFi through approacha
     summary: "A health and lifestyle app helping users live longer, healthier lives.",
     client: "StayGold",
     role: "UX/UI Designer",
-    year: "2022",
+    year: "2025",
     tags: ["Health", "Lifestyle", "Mobile", "Design System"],
     accent: "#b45309",
     accentText: "light",
@@ -700,7 +719,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A security platform that screens scam calls and SMS, and verifies trusted numbers.",
     client: "Concept project",
     role: "UX/UI Designer",
-    year: "2022",
+    year: "2024",
     tags: ["Security", "Anti-scam", "Mobile", "Design System"],
     accent: "#1f2937",
     accentText: "light",
@@ -733,7 +752,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A culturally-rooted concept blending Thai heritage with modern UI.",
     client: "Tossakan",
     role: "UX/UI Designer",
-    year: "2021",
+    year: "2022",
     tags: ["Concept", "Branding", "UI"],
     accent: "#7f1d1d",
     accentText: "light",
@@ -749,7 +768,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A travel-program app guiding visitors through a safe-island journey.",
     client: "Samui Plus",
     role: "UX/UI Designer",
-    year: "2021",
+    year: "2022",
     tags: ["Travel", "Mobile", "Service Design"],
     accent: "#0e7490",
     accentText: "light",
@@ -765,7 +784,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A logistics platform spanning web dashboard and mobile operations.",
     client: "Cargo Work",
     role: "UX/UI Designer",
-    year: "2023",
+    year: "2022",
     tags: ["Logistics", "Web App", "Dashboard", "Mobile"],
     accent: "#15803d",
     accentText: "light",
@@ -781,7 +800,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A corporate site that makes a technical service feel effortless.",
     client: "Astro Solutions",
     role: "Web Designer",
-    year: "2022",
+    year: "2021",
     tags: ["Corporate", "Landing", "Web"],
     accent: "#312e81",
     accentText: "light",
@@ -797,7 +816,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A landing page concept for the national airports experience.",
     client: "Airports of Thailand",
     role: "Web Designer",
-    year: "2022",
+    year: "2021",
     tags: ["Landing Page", "Public Sector", "Web"],
     accent: "#155e75",
     accentText: "light",
@@ -813,7 +832,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A bold brand site with playful motion and strong typography.",
     client: "Unicorn House",
     role: "Web Designer",
-    year: "2021",
+    year: "2020",
     tags: ["Brand", "Web", "Motion"],
     accent: "#9d174d",
     accentText: "light",
@@ -829,7 +848,7 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     summary: "A landing page for Thailand's tourism safety & hygiene standard.",
     client: "SHA+ / TAT",
     role: "Web Designer",
-    year: "2021",
+    year: "2022",
     tags: ["Landing Page", "Tourism", "Web"],
     accent: "#0f766e",
     accentText: "light",
