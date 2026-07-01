@@ -17,20 +17,20 @@ export function ImageAutoSlider({
   return (
     <figure>
       <div
-        className="overflow-hidden"
+        className="overflow-hidden py-3"
         style={{
           maskImage: "linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%)",
         }}
       >
         <div
-          className="flex w-max gap-4 animate-marquee"
-          style={{ animationDuration: "36s" }}
+          className="flex w-max gap-4 animate-marquee hover:[animation-play-state:paused]"
+          style={{ animationDuration: "44s" }}
         >
           {doubled.map((src, i) => (
             <div
               key={i}
-              className="relative shrink-0 aspect-square w-[218px] overflow-hidden rounded-2xl border-0 sm:w-[312px]"
+              className="relative shrink-0 aspect-square w-[218px] overflow-hidden rounded-2xl border-0 transition-transform duration-300 ease-out hover:scale-105 sm:w-[312px]"
               style={{ backgroundColor: accent }}
             >
               <Image

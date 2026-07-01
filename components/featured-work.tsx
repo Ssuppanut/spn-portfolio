@@ -57,10 +57,12 @@ export function FeaturedWork() {
         >
           work
         </motion.h3>
-        <Link href="/work" className={pillButton}>
-          View all {projects.length} projects
-          <span aria-hidden>→</span>
-        </Link>
+        <div className="hidden sm:block">
+          <Link href="/work" className={pillButton}>
+            View all {projects.length} projects
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
       </div>
 
       {/* 1 col on mobile, 2 on tablet, 3 on desktop (6 projects = 3 + 3).
@@ -77,6 +79,14 @@ export function FeaturedWork() {
             <WorkTile project={p} ratio="aspect-[4/3]" />
           </motion.div>
         ))}
+      </div>
+
+      {/* mobile-only: button sits below the projects, centered */}
+      <div className="mt-12 flex justify-center sm:hidden">
+        <Link href="/work" className={pillButton}>
+          View all {projects.length} projects
+          <span aria-hidden>→</span>
+        </Link>
       </div>
     </motion.section>
   );

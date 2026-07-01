@@ -21,6 +21,23 @@ export default function Home() {
           <h3 className="display lowercase text-[clamp(1.75rem,5vw,3.75rem)] leading-none">
             about
           </h3>
+          <div className="hidden sm:block">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-medium uppercase tracking-widest text-ink transition-colors hover:bg-ink/5"
+            >
+              Show more
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </div>
+
+        <p className="display lowercase max-w-[22ch] text-[clamp(2.25rem,6.5vw,5.25rem)] leading-[1.08]">
+          <ScrollRevealText text={site.intro} />
+        </p>
+
+        {/* mobile-only: button sits below the copy, centered */}
+        <div className="mt-12 flex justify-center sm:hidden">
           <Link
             href="/about"
             className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-medium uppercase tracking-widest text-ink transition-colors hover:bg-ink/5"
@@ -29,10 +46,6 @@ export default function Home() {
             <span aria-hidden>→</span>
           </Link>
         </div>
-
-        <p className="display lowercase max-w-[22ch] text-[clamp(2.25rem,6.5vw,5.25rem)] leading-[1.08]">
-          <ScrollRevealText text={site.intro} />
-        </p>
       </section>
     </>
   );

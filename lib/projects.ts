@@ -88,25 +88,6 @@ export type Project = {
   caseStudy?: RichSection[];
 };
 
-const placeholderSections = (kind: string): CaseSection[] => [
-  {
-    heading: "The challenge",
-    body: `Replace this with the core problem you set out to solve on ${kind}. Frame it around the user need and the business goal — what was broken, who it affected, and why it mattered.`,
-  },
-  {
-    heading: "Process",
-    body: "Walk through how you approached it: research, user flows, wireframes, design-system work, and the key decisions and trade-offs you made along the way. Keep it focused on your thinking.",
-  },
-  {
-    heading: "Solution",
-    body: "Describe the final design — the flows, the components, the interaction patterns — and how each piece answers the challenge above. Pair this with the screens in the gallery.",
-  },
-  {
-    heading: "Impact",
-    body: "Close with outcomes: adoption, task-completion, conversion, qualitative feedback, or what shipped. Even directional numbers help recruiters understand the value you delivered.",
-  },
-];
-
 const projectList: Project[] = [
   {
     slug: "k-plus-investment",
@@ -193,11 +174,6 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           "/work/k-plus-investment/history-01.jpg",
           "/work/k-plus-investment/investment-01.jpg",
           "/work/k-plus-investment/theme-02.jpg",
-          "/work/k-plus-investment/tax-02.jpg",
-          "/work/k-plus-investment/portfolio-02.jpg",
-          "/work/k-plus-investment/alert-02.jpg",
-          "/work/k-plus-investment/history-02.jpg",
-          "/work/k-plus-investment/investment-02.jpg",
         ],
       },
       {
@@ -337,17 +313,17 @@ Typography prioritizes readability of numbers and financial data at a glance. Th
           {
             heading: "Align the vision before the first pixel.",
             body: "A stakeholder workshop before kickoff surfaced misaligned expectations early, when they were still cheap to resolve. The hours spent agreeing on direction saved weeks of rework downstream.",
-            now: "run a stakeholder workshop to lock the design vision before any screen gets designed.",
+            now: "“run a stakeholder workshop to lock the design vision before any screen gets designed.”",
           },
           {
             heading: "Critique is what keeps teams in sync.",
             body: "Weekly critiques with design, product, and engineering kept everyone working from the same picture. Decisions were pressure-tested in the room instead of discovered late in handoff.",
-            now: "hold a standing weekly critique so cross-functional teams stay aligned, not just informed.",
+            now: "“hold a standing weekly critique so cross-functional teams stay aligned, not just informed.”",
           },
           {
             heading: "Launch is the start of the feedback loop.",
             body: "Post-launch user feedback drove a second round of refinements across the main page, portfolio, and investment entry points, the kind of calibration only real usage can reveal.",
-            now: "treat launch as the beginning of learning, and plan a refinement round around real user behaviour.",
+            now: "“treat launch as the beginning of learning, and plan a refinement round around real user behaviour.”",
           },
         ],
       },
@@ -418,17 +394,97 @@ Streamline the transfer channel selection process.`,
     slug: "finvest-redesign",
     title: "Finvest Redesign",
     category: "UX/UI Design",
-    summary: "Rethinking a wealth-management platform from the information architecture up.",
-    client: "Internal project",
+    summary:
+      "Redesigning a live investment app that brings global funds together, from research through a delivered design system.",
+    client: "Finvest (company redesign, not carried into development)",
     role: "UX/UI Designer",
     year: "2023",
-    tags: ["Fintech", "Redesign", "Wealth", "IA"],
+    tags: ["Fintech", "Investing", "Redesign", "Mobile", "Design System"],
     accent: "#1d3a8a",
     accentText: "light",
+    platform: "Mobile (iOS)",
+    tools: "Figma, Adobe Creative Suite",
+    methods:
+      "Desk Research, Qualitative Interviews, Competitive Analysis, Wireframing, Design System, Usability Testing",
     overview:
-      "A ground-up redesign of Finvest's wealth platform — restructuring navigation, modernising the visual language and tightening the path to action.",
-    sections: placeholderSections("the Finvest redesign"),
+      "Finvest is an investment app that brings together funds from around the world, letting Thai investors buy local mutual funds and invest directly in foreign funds in one place. It is a live product, and I was brought in on a company project to redesign it. My role ran from research through visual design and a delivered design system. My goal was to take a dense, feature heavy product and make it easier to read, navigate, and act on.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "The problem",
+        body: "Finvest is a live, dense, feature heavy investment app. I was brought in to redesign it so users could read, navigate, and act on it more easily.",
+      },
+      {
+        heading: "Approach",
+        body: "I started by listening: public feedback plus interviews with the operations team. I then ran a competitive analysis, built a UI style guide and design system, and redesigned the core screens.",
+      },
+      {
+        heading: "Outcome",
+        body: "I delivered the research, a design system, and redesigned Home, Fund Info, Portfolio, and Filters. The redesign was not carried into development, so there are no post launch metrics to report.",
+      },
+    ],
     gallery: 4,
+    caseStudy: [
+      {
+        kicker: "Discovery",
+        heading: "I listened before I redesigned",
+        body: `I did not want to redesign on assumptions, so I started by listening. I compiled user comments from social media and app store reviews to map where the current app frustrated people. To go deeper, I interviewed the operations team who speak with customers directly every day, pairing their frontline view with the public feedback.
+
+Three problems surfaced again and again.`,
+        points: [
+          {
+            title: "Expiring ID cards blocked users",
+            body: "A large share of customers got stuck when their ID card expired, with no clear path to resolve it.",
+          },
+          {
+            title: "Transaction data felt incomplete",
+            body: "Users could not always find a full, trustworthy record of their activity.",
+          },
+          {
+            title: "People wanted to see performance visually",
+            body: "Investors asked for graph based performance instead of numbers alone.",
+          },
+        ],
+      },
+      {
+        kicker: "Research",
+        heading: "Competitive analysis",
+        body: "I opened the redesign proper with a competitive analysis, benchmarking how other investment apps structured fund information, portfolios, and performance. That let me build on proven patterns before diverging where Finvest needed something of its own.",
+      },
+      {
+        kicker: "Foundation",
+        heading: "Design system and style guide",
+        body: "Before I touched high fidelity screens, I built a UI style guide covering typography, color, iconography, and components. This kept the redesign consistent and gave it room to scale as the product grew.",
+      },
+      {
+        kicker: "The redesign",
+        heading: "Reworking the core screens",
+        body: "With the foundation in place, I reworked the core screens.",
+        points: [
+          {
+            title: "Home",
+            body: "I customized the components and colors and surfaced the most used features, so the important actions are visible the moment users open the app.",
+          },
+          {
+            title: "Fund Info",
+            body: "I grouped the data into clear sections so investors can read a fund's details without wading through a wall of numbers.",
+          },
+          {
+            title: "Portfolio",
+            body: "I reorganized the portfolio data to feel more modern and easier to parse at a glance.",
+          },
+          {
+            title: "Filters",
+            body: "I expanded filtering so users can narrow funds in more detail, changed the display to work from the side, and added imagery to make searching faster.",
+          },
+        ],
+      },
+      {
+        kicker: "Outcome",
+        heading: "Status",
+        body: "The Finvest app is live on the App Store. This redesign was a company project, and I delivered the full package: the research, a UI style guide and design system, and redesigned Home, Fund Info, Portfolio, and Filters screens. The redesign was not carried forward into development, so there are no post launch metrics to report. What I can point to is the reasoning and the system I handed over, shown in full in the gallery.",
+      },
+    ],
   },
   {
     slug: "kublerx",
@@ -602,24 +658,6 @@ The design bridged two audiences: bringing newcomers into DeFi through approacha
     ],
   },
   {
-    slug: "daily-ui-challenge",
-    title: "Daily UI Challenge",
-    category: "UX/UI Design",
-    summary: "A running series of UI explorations and interaction studies.",
-    client: "Personal",
-    role: "UI Designer",
-    year: "2023",
-    tags: ["UI", "Exploration", "Motion", "Dribbble"],
-    accent: "#7c2d92",
-    accentText: "light",
-    overview:
-      "An ongoing personal practice — one interface a day — used to explore visual styles, micro-interactions and edge-case states outside of client constraints.",
-    sections: placeholderSections("the Daily UI series"),
-    gallery: 6,
-    externalUrl: "https://dribbble.com/sukuntapuksa",
-    externalLabel: "View on Dribbble",
-  },
-  {
     slug: "staygold",
     title: "StayGold",
     category: "UX/UI Design",
@@ -749,81 +787,214 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     slug: "tossakan",
     title: "Tossakan",
     category: "UX/UI Design",
-    summary: "A culturally-rooted concept blending Thai heritage with modern UI.",
+    summary:
+      "Designing the Incident Case and Data Collection features for a security incident reporting app.",
     client: "Tossakan",
     role: "UX/UI Designer",
     year: "2022",
-    tags: ["Concept", "Branding", "UI"],
+    tags: ["Incident Management", "Data Collection", "Security", "Mobile"],
     accent: "#7f1d1d",
     accentText: "light",
+    methods: "Visual Design, Wireframe, User Flow",
     overview:
-      "Tossakan is a concept that weaves Thai mythological identity into a contemporary digital product — a study in cultural storytelling through interface.",
-    sections: placeholderSections("Tossakan"),
+      "Tossakan is an application used by security guards, building and estate management teams, and security teams to report and manage incident cases in the field. In a focused three week engagement, I designed two features: Incident Case, where a reported case is logged and managed, and Collect Data, where the information tied to that case is captured in a structured way. I owned the visual design, wireframes, and user flow for both.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "Scope",
+        body: "A three week engagement to design two features for a field incident reporting app: Incident Case and Collect Data.",
+      },
+      {
+        heading: "Status",
+        body: "Tossakan was built and shipped to the App Store. I was not looped into post launch feedback, so I do not have usage data to report.",
+      },
+    ],
     gallery: 4,
+    caseStudy: [
+      {
+        kicker: "Feature 01",
+        heading: "Incident Case",
+        body: "I designed the flow for creating and managing an incident case, structuring it so a user can log a case and move it forward step by step without confusion.",
+      },
+      {
+        kicker: "Feature 02",
+        heading: "Collect Data",
+        body: "I designed the data collection feature so the information attached to each case is captured in a clear, structured order, rather than through one long undifferentiated form.",
+      },
+      {
+        kicker: "Outcome",
+        heading: "Status",
+        body: "Tossakan was built and shipped to the App Store. I was not looped into post launch feedback, so I do not have usage data to report, but the app went live with the features I designed.",
+      },
+    ],
   },
   {
     slug: "samui-plus",
     title: "Samui Plus",
     category: "UX/UI Design",
-    summary: "A travel-program app guiding visitors through a safe-island journey.",
-    client: "Samui Plus",
+    summary:
+      "My part of a team pitch for a Koh Samui travel app: the Explore and Me features.",
+    client: "Samui Plus (team pitch for a government agency)",
     role: "UX/UI Designer",
     year: "2022",
-    tags: ["Travel", "Mobile", "Service Design"],
+    tags: ["Travel", "Mobile", "Pitch"],
     accent: "#0e7490",
     accentText: "light",
+    methods: "Visual Design, Wireframe, User Flow",
     overview:
-      "Samui Plus guides travellers step-by-step through the island's entry programme — turning a complex set of requirements into a guided, reassuring flow.",
-    sections: placeholderSections("Samui Plus"),
+      "Samui Plus is a travel app for Koh Samui, produced as a team pitch to a government agency. The work was divided across the team, and my part was two features across a two week sprint: Explore, which helps visitors discover what the island offers, and Me, the personal space where a traveler manages their own information. I handled visual design, wireframes, and user flow for those two features.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "Scope",
+        body: "A two week sprint within a team pitch to a government agency. My part was the Explore and Me features.",
+      },
+      {
+        heading: "Status",
+        body: "This was a team pitch, not a shipped product, so there is no live release or metrics. It is included to show the Explore and Me features I designed.",
+      },
+    ],
     gallery: 4,
+    caseStudy: [
+      {
+        kicker: "Feature 01",
+        heading: "Explore",
+        body: "I designed the Explore feature to help visitors browse island activities and services in a way that feels inviting rather than overwhelming.",
+      },
+      {
+        kicker: "Feature 02",
+        heading: "Me",
+        body: "I designed the Me feature as a clear personal hub where a traveler can find their own details and status at a glance.",
+      },
+      {
+        kicker: "Outcome",
+        heading: "Status",
+        body: "This was a team pitch to a government agency, not a shipped product, so there is no live release or metrics. It is included to show the Explore and Me features I designed within the pitch.",
+      },
+    ],
   },
   {
     slug: "cargo-work",
     title: "Cargo Work",
     category: "Web Design",
-    summary: "A logistics platform spanning web dashboard and mobile operations.",
+    summary:
+      "Designing the login and E-Weight Slip flow for a logistics operations platform.",
     client: "Cargo Work",
     role: "UX/UI Designer",
     year: "2022",
-    tags: ["Logistics", "Web App", "Dashboard", "Mobile"],
+    tags: ["Logistics", "Web App", "Design System", "User Flow"],
     accent: "#15803d",
     accentText: "light",
+    methods: "Visual Design, Wireframe, User Flow, Design System",
     overview:
-      "Cargo Work connects shippers and operators across web and mobile — designing dense operational data into a calm, scannable working surface.",
-    sections: placeholderSections("Cargo Work"),
+      "Cargo Work is a logistics platform for shipping and freight operations. My focus was scoped to two critical pieces: the login flow and the E-Weight Slip feature, where operators record and confirm cargo weight. Across two months I handled the visual design, user flow, and a design system to keep the work consistent.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "Scope",
+        body: "Two months on two critical pieces of a logistics platform: the login flow and the E-Weight Slip feature.",
+      },
+      {
+        heading: "Status",
+        body: "The login and E-Weight Slip shipped and are in real use. I designed to a defined set of requirements and was not looped into post launch feedback.",
+      },
+    ],
     gallery: 4,
+    caseStudy: [
+      {
+        kicker: "Foundation",
+        heading: "Design system",
+        body: "I built a design system so the platform's screens shared one visual language. That made the login and E-Weight Slip work faster to design and easier to extend later.",
+      },
+      {
+        kicker: "Process",
+        heading: "User flow",
+        body: "I mapped the E-Weight Slip flow end to end, from login through to a completed weight slip, so the steps matched how operators actually work rather than how the database is structured.",
+      },
+      {
+        kicker: "Design",
+        heading: "User interface",
+        body: "I designed the login and E-Weight Slip screens against that system, keeping dense operational data calm and scannable so operators can move quickly without second guessing.",
+      },
+      {
+        kicker: "Outcome",
+        heading: "Status",
+        body: "The login and E-Weight Slip shipped and are in real use. I designed to a defined set of requirements and was not looped into post launch feedback, so I do not have usage metrics to report, but the work is live and in operators' hands.",
+      },
+    ],
   },
   {
     slug: "astro-solutions",
     title: "Astro Solutions",
     category: "Web Design",
-    summary: "A corporate site that makes a technical service feel effortless.",
+    summary: "A corporate site that makes a technical service feel clear and credible.",
     client: "Astro Solutions",
     role: "Web Designer",
     year: "2021",
-    tags: ["Corporate", "Landing", "Web"],
+    tags: ["Corporate", "Website", "Web"],
     accent: "#312e81",
     accentText: "light",
+    methods: "Web Design, Visual Design",
     overview:
-      "A marketing site for a technology services company — built to communicate credibility, clarity and momentum from the first scroll.",
-    sections: placeholderSections("Astro Solutions"),
+      "Astro Solutions is a technology services company that needed a corporate website to present itself with clarity and credibility. I designed the marketing site across its core pages, Home, About Us, Portfolio, and News, shaping how the company introduces its work and earns trust from the first scroll.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "Scope",
+        body: "A multi page corporate site across Home, About Us, Portfolio, and News.",
+      },
+      {
+        heading: "Approach",
+        body: "I structured the site so a visitor moves naturally from what the company does, to who they are, to proof of work, to what is current.",
+      },
+    ],
     gallery: 3,
+    caseStudy: [
+      {
+        kicker: "Approach",
+        heading: "Approach",
+        body: "I structured the site so a visitor moves naturally from what the company does on Home, to who they are on About Us, to proof of work in the Portfolio, to what is current in News. I worked from the company's CI palette and extended it with supporting colors so the design had enough range to work with. I shaped the content in coordination with the marketing and business teams and other stakeholders, then designed around it.",
+      },
+    ],
   },
   {
     slug: "airport-thailand",
     title: "Airport Thailand",
     category: "Web Design",
-    summary: "A landing page concept for the national airports experience.",
-    client: "Airports of Thailand",
-    role: "Web Designer",
+    summary:
+      "A marketing landing page for an Airports of Thailand site, plus client side design direction.",
+    client: "Airports of Thailand (vendor built the main site)",
+    role: "Web Designer, client side direction",
     year: "2021",
-    tags: ["Landing Page", "Public Sector", "Web"],
+    tags: ["Public Sector", "Web", "Landing Page"],
     accent: "#155e75",
     accentText: "light",
     overview:
-      "A landing-page concept for Airports of Thailand — organising travel information, services and wayfinding into a single welcoming entry point.",
-    sections: placeholderSections("the Airport Thailand landing page"),
+      "Airports of Thailand ran a web project where a vendor built and designed the main site. My role sat on the client side. I designed a marketing landing page that lives within the site and fell outside the vendor's scope, and I prepared the site map, content, and color themes, then reviewed the vendor's work and gave design direction across the whole site.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "Scope",
+        body: "A vendor built the main site. I designed one marketing landing page within it and gave client side design direction across the whole site.",
+      },
+      {
+        heading: "Status",
+        body: "The site is live. The main site design was the vendor's work. My own contribution is the marketing landing page, alongside the client side direction and review.",
+      },
+    ],
     gallery: 3,
+    caseStudy: [
+      {
+        kicker: "Approach",
+        heading: "Approach",
+        body: "On the part I designed myself, the marketing landing page, I focused on making a public sector service feel clear and easy to enter, with a straightforward path to the action a traveler came to take. Across the rest of the site, my job was to keep the vendor's work aligned to the site map, content, and visual direction we had set.",
+      },
+      {
+        kicker: "Outcome",
+        heading: "Status",
+        body: "The site is live. The main site design was the vendor's work. My own design contribution is the marketing landing page, alongside the client side direction and review.",
+      },
+    ],
   },
   {
     slug: "unicorn-house",
@@ -836,26 +1007,72 @@ Stakeholder feedback led to three refinements: the Health screen was restructure
     tags: ["Brand", "Web", "Motion"],
     accent: "#9d174d",
     accentText: "light",
+    methods: "Web Design, Visual Design, Motion",
     overview:
-      "Unicorn House needed a site as distinctive as its brand — leaning into expressive type, colour and motion while keeping the content easy to navigate.",
-    sections: placeholderSections("Unicorn House"),
+      "Unicorn House needed a website as distinctive as its brand. I designed the entire site myself, and it went live. I owned the full design, from layout to visual style, leaning into strong typography, color, and motion while keeping the content easy to navigate.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "The work",
+        body: "I designed the entire site myself, owning the full design from layout to visual style, leaning into strong typography, color, and motion.",
+      },
+      {
+        heading: "Note on the live version",
+        body: "The brand has since changed its CI, and the current live site uses a different design. The work shown here is my original design, which I have archived.",
+      },
+    ],
     gallery: 3,
+    caseStudy: [
+      {
+        kicker: "The work",
+        heading: "A site as distinctive as the brand",
+        body: "I designed the entire site myself, and it went live. I owned the full design, from layout to visual style, leaning into strong typography, color, and motion while keeping the content easy to navigate.",
+      },
+      {
+        kicker: "Note",
+        heading: "Note on the live version",
+        body: "The brand has since changed its CI, and the current live site uses a different design. The work shown here is my original design, which I have archived, so what you see stays true to what I built rather than the newer site. For that reason there is no live link out.",
+      },
+    ],
   },
   {
     slug: "sha-plus",
     title: "SHA+",
     category: "Web Design",
-    summary: "A landing page for Thailand's tourism safety & hygiene standard.",
-    client: "SHA+ / TAT",
+    summary: "A hotel booking marketplace landing page for SHA+ certified hotels.",
+    client: "SHA+",
     role: "Web Designer",
     year: "2022",
-    tags: ["Landing Page", "Tourism", "Web"],
+    tags: ["Hotel Booking", "Marketplace", "Web"],
     accent: "#0f766e",
     accentText: "light",
+    methods: "Web Design, Visual Design",
     overview:
-      "A landing page communicating the SHA+ safety standard to travellers and businesses — clear, trustworthy and quick to act on.",
-    sections: placeholderSections("the SHA+ landing page"),
+      "SHA+ is Thailand's tourism safety and hygiene standard. I designed a hotel booking marketplace landing page for hotels certified under that standard, so travelers could find and book stays they could trust. I designed the page end to end myself.",
+    // Simple fallback (unused while `caseStudy` is present)
+    sections: [
+      {
+        heading: "Approach",
+        body: "I led with the trust the SHA+ certification represents, then made finding and booking a certified hotel simple and quick.",
+      },
+      {
+        heading: "Status",
+        body: "The page went live. It has most likely since been taken down, and I do not have usage data to report.",
+      },
+    ],
     gallery: 3,
+    caseStudy: [
+      {
+        kicker: "Approach",
+        heading: "Approach",
+        body: "I led with the trust the SHA+ certification represents, then made finding and booking a certified hotel simple and quick, keeping the path from landing to booking short and the next step always obvious.",
+      },
+      {
+        kicker: "Outcome",
+        heading: "Status",
+        body: "The page went live. It has most likely since been taken down, and I do not have usage data to report. It is included to show the marketplace landing page I designed end to end. For that reason there is no live link out.",
+      },
+    ],
   },
 ];
 
@@ -871,7 +1088,6 @@ const order = [
   "finvest-redesign",
   "cargo-work",
   "tossakan",
-  "daily-ui-challenge",
   "samui-plus",
   "sha-plus",
   "astro-solutions",

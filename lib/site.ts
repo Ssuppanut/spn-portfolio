@@ -6,7 +6,7 @@ export const site = {
   location: "Bangkok, Thailand",
   available: true,
   tagline:
-    "Senior UX/UI Designer with 5+ years across fintech, banking and crypto. Mobile-first by focus, experienced across mobile, web and back-office systems.",
+    "Senior UX/UI Designer. 9+ years across graphic, web and product design, now specialized in fintech, banking and crypto UX/UI. Mobile-first by focus.",
   intro:
     "Hello I'm a UX/UI Designer focused on understanding user needs and enhancing experiences across mobile, web, and emerging products.",
   about: [

@@ -334,52 +334,51 @@ export default async function CaseStudy({
           })()}
         </div>
       ) : (
-        <>
-          {/* Simple case study: text sections + gallery grid */}
-          <div className="px-gutter mt-24 md:mt-36 space-y-24 md:space-y-36">
-            {project.sections.map((section, i) => (
-              <section
-                key={section.heading}
-                className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16"
-              >
-                <div className="md:col-span-4">
-                  <p className="eyebrow mb-4">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h2 className="display text-2xl md:text-3xl">
-                    {section.heading}
-                  </h2>
-                </div>
-                <div className="md:col-span-8">
-                  <p className="text-lg md:text-xl text-ink/80 leading-relaxed whitespace-pre-line">
-                    {section.body}
-                  </p>
-                </div>
-              </section>
+        /* Simple case study: text sections */
+        <div className="px-gutter mt-24 md:mt-36 space-y-24 md:space-y-36">
+          {project.sections.map((section, i) => (
+            <section
+              key={section.heading}
+              className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16"
+            >
+              <div className="md:col-span-4">
+                <p className="eyebrow mb-4">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h2 className="display text-2xl md:text-3xl">
+                  {section.heading}
+                </h2>
+              </div>
+              <div className="md:col-span-8">
+                <p className="text-lg md:text-xl text-ink/80 leading-relaxed whitespace-pre-line">
+                  {section.body}
+                </p>
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+
+      {/* Gallery — placeholder slots; also rendered below a rich caseStudy */}
+      {project.gallery > 0 && (
+        <div className="px-gutter mt-24 md:mt-36">
+          <p className="eyebrow mb-8">Gallery</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {Array.from({ length: project.gallery }).map((_, i) => (
+              <Reveal key={i} className={i % 3 === 0 ? "sm:col-span-2" : ""}>
+                <ProjectMedia
+                  src={`/work/${project.slug}/${String(i + 1).padStart(2, "0")}.jpg`}
+                  accent={project.accent}
+                  accentText={project.accentText}
+                  label={`${project.title} ${i + 1}`}
+                  className={`w-full rounded-md ${
+                    i % 3 === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
+                  }`}
+                />
+              </Reveal>
             ))}
           </div>
-
-          {project.gallery > 0 && (
-            <div className="px-gutter mt-24 md:mt-36">
-              <p className="eyebrow mb-8">Gallery</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {Array.from({ length: project.gallery }).map((_, i) => (
-                  <Reveal key={i} className={i % 3 === 0 ? "sm:col-span-2" : ""}>
-                    <ProjectMedia
-                      src={`/work/${project.slug}/${String(i + 1).padStart(2, "0")}.jpg`}
-                      accent={project.accent}
-                      accentText={project.accentText}
-                      label={`${project.title} ${i + 1}`}
-                      className={`w-full rounded-md ${
-                        i % 3 === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
-                      }`}
-                    />
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          )}
-        </>
+        </div>
       )}
 
       {/* More projects to read */}
@@ -429,14 +428,16 @@ export default async function CaseStudy({
           ))}
         </div>
 
-        {/* mobile-only see all */}
-        <Link
-          href="/work"
-          className="mt-12 inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-medium uppercase tracking-widest transition-colors hover:bg-ink/5 sm:hidden"
-        >
-          See all work
-          <span aria-hidden>→</span>
-        </Link>
+        {/* mobile-only see all — centered below the cards */}
+        <div className="mt-12 flex justify-center sm:hidden">
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-medium uppercase tracking-widest transition-colors hover:bg-ink/5"
+          >
+            See all work
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
       </section>
     </article>
   );
